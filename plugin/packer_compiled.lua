@@ -109,6 +109,11 @@ _G.packer_plugins = {
     path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
+  ["gitui.nvim"] = {
+    loaded = true,
+    path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/gitui.nvim",
+    url = "https://github.com/aspeddro/gitui.nvim"
+  },
   ["lsp-zero.nvim"] = {
     loaded = true,
     path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
@@ -159,10 +164,10 @@ _G.packer_plugins = {
     path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
-  tagalong = {
+  ["tagalong.vim"] = {
     loaded = true,
-    path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/tagalong",
-    url = "https://github.com/AndrewRadev/tagalong"
+    path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/tagalong.vim",
+    url = "https://github.com/AndrewRadev/tagalong.vim"
   },
   ["telescope.nvim"] = {
     loaded = true,

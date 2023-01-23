@@ -5,11 +5,10 @@ return require('packer').startup(function(use)
   use 'shaunsingh/nord.nvim'
   use "windwp/nvim-ts-autotag"
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
-  use {
-	  'nvim-telescope/telescope.nvim', tag = '0.1.1',
-	  -- or                            , branch = '0.1.x',
-	  requires = { {'nvim-lua/plenary.nvim'} }
-  }
+  use({
+      "nvim-telescope/telescope.nvim",
+      requires = { { "nvim-lua/plenary.nvim" } },
+  })
   use {
 	  'VonHeikemen/lsp-zero.nvim',
 	  branch = 'v1.x',
@@ -32,5 +31,6 @@ return require('packer').startup(function(use)
 		  {'rafamadriz/friendly-snippets'}, -- Optional
 	  }
   }
-  use "AndrewRadev/tagalong"
+  use "AndrewRadev/tagalong.vim"
+  use "aspeddro/gitui.nvim"
 end)
