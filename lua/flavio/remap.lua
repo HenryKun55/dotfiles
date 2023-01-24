@@ -1,3 +1,5 @@
+local bufopts = { noremap=true, silent=true, buffer=bufnr }
+
 vim.g.mapleader = " "
 vim.g.netrw_banner = false
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
@@ -11,12 +13,7 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
-vim.keymap.set("n", "<leader>vwm", function()
-    require("vim-with-me").StartVimWithMe()
-end)
-vim.keymap.set("n", "<leader>svwm", function()
-    require("vim-with-me").StopVimWithMe()
-end)
+vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
 
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
@@ -40,10 +37,18 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
+-- GitUi
 vim.keymap.set("n", "<leader>gi", function ()
     require("gitui").open()
 end)
 
 vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/flavio/packer.lua<CR>");
-vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
 
+-- CellularAutomaton
+vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
+vim.keymap.set("n", "<leader>gol", "<cmd>CellularAutomaton game_of_life<CR>");
+
+-- UI Select
+vim.keymap.set("n", "<leader>ca", function ()
+   vim.lsp.buf.code_action()
+end)

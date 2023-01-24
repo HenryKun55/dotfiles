@@ -114,6 +114,11 @@ _G.packer_plugins = {
     path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
+  ["gitsigns.nvim"] = {
+    loaded = true,
+    path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
+    url = "https://github.com/lewis6991/gitsigns.nvim"
+  },
   ["gitui.nvim"] = {
     loaded = true,
     path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/gitui.nvim",
@@ -134,10 +139,10 @@ _G.packer_plugins = {
     path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
-  ["nord.nvim"] = {
+  ["null-ls.nvim"] = {
     loaded = true,
-    path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/nord.nvim",
-    url = "https://github.com/shaunsingh/nord.nvim"
+    path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
+    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
   },
   ["nvim-cmp"] = {
     loaded = true,
@@ -164,6 +169,11 @@ _G.packer_plugins = {
     path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/nvim-tree/nvim-web-devicons"
   },
+  ["one-nvim"] = {
+    loaded = true,
+    path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/one-nvim",
+    url = "https://github.com/Th3Whit3Wolf/one-nvim"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/packer.nvim",
@@ -178,6 +188,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/tagalong.vim",
     url = "https://github.com/AndrewRadev/tagalong.vim"
+  },
+  ["telescope-ui-select.nvim"] = {
+    loaded = true,
+    path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/telescope-ui-select.nvim",
+    url = "https://github.com/nvim-telescope/telescope-ui-select.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,

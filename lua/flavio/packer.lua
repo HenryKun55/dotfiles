@@ -2,7 +2,6 @@ vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
-  use 'shaunsingh/nord.nvim'
   use 'windwp/nvim-ts-autotag'
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use({
@@ -42,4 +41,8 @@ return require('packer').startup(function(use)
           }
       end
   }
+  use 'Th3Whit3Wolf/one-nvim'
+  use 'nvim-telescope/telescope-ui-select.nvim'
+  use 'jose-elias-alvarez/null-ls.nvim'
+  use 'lewis6991/gitsigns.nvim'
 end)
