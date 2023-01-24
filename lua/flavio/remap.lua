@@ -13,8 +13,12 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
-vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
 
+vim.keymap.set('n', '<C-x>', ":noh<CR>")
+
+-- LSP
+vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, bufopts)
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
 

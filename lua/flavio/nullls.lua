@@ -21,6 +21,7 @@ prettier.setup = {
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 local formatting = null_ls.builtins.formatting
+
 null_ls.setup({
   debug = false,
     sources = {

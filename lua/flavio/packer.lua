@@ -44,5 +44,6 @@ return require('packer').startup(function(use)
   use 'Th3Whit3Wolf/one-nvim'
   use 'nvim-telescope/telescope-ui-select.nvim'
   use 'jose-elias-alvarez/null-ls.nvim'
+  use 'MunifTanjim/prettier.nvim'
   use 'lewis6991/gitsigns.nvim'
 end)
