@@ -3,11 +3,11 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'shaunsingh/nord.nvim'
-  use "windwp/nvim-ts-autotag"
+  use 'windwp/nvim-ts-autotag'
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use({
-      "nvim-telescope/telescope.nvim",
-      requires = { { "nvim-lua/plenary.nvim" } },
+      'nvim-telescope/telescope.nvim',
+      requires = { { 'nvim-lua/plenary.nvim' } },
   })
   use {
 	  'VonHeikemen/lsp-zero.nvim',
@@ -31,6 +31,15 @@ return require('packer').startup(function(use)
 		  {'rafamadriz/friendly-snippets'}, -- Optional
 	  }
   }
-  use "AndrewRadev/tagalong.vim"
-  use "aspeddro/gitui.nvim"
+  use 'AndrewRadev/tagalong.vim'
+  use 'aspeddro/gitui.nvim'
+  use 'eandrju/cellular-automaton.nvim'
+  use {
+      "folke/trouble.nvim",
+      requires = "nvim-tree/nvim-web-devicons",
+      config = function()
+          require("trouble").setup {
+          }
+      end
+  }
 end)
