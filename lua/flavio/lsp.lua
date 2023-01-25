@@ -9,5 +9,4 @@ vim.diagnostic.config({
   update_in_insert = false,
   underline = true,
   severity_sort = false,
-  float = true,
 })

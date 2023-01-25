@@ -6,7 +6,7 @@ local status, prettier = pcall(require, "prettier")
 if not status then return end
 
 prettier.setup = {
-  bin = 'prettierd',
+  bin = 'prettier',
   filetypes = {
     'css',
     'javascript',
@@ -24,22 +24,25 @@ local formatting = null_ls.builtins.formatting
 
 null_ls.setup({
   debug = false,
-    sources = {
-        formatting.prettier,
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+  sources = {
+    formatting.prettier,
     null_ls.builtins.code_actions.eslint,
-    null_ls.builtins.diagnostics.eslint,
-    },
+    null_ls.builtins.diagnostics.eslint.with({
+      prefer_local = "node_modules/.bin",
+    }),
+  },
   on_attach = function(client, bufnr)
-      if client.supports_method("textDocument/formatting") then
-          vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-          vim.api.nvim_create_autocmd("BufWritePre", {
-              group = augroup,
-              buffer = bufnr,
-              callback = function()
-                  -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-                  vim.lsp.buf.format()
-              end,
-          })
-      end
-    end,
+    if client.supports_method("textDocument/formatting") then
+      vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = augroup,
+        buffer = bufnr,
+        callback = function()
+          -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+          vim.lsp.buf.format()
+        end,
+      })
+    end
+  end,
 })
