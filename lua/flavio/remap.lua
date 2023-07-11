@@ -41,11 +41,8 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
--- GitUi
-vim.keymap.set("n", "<leader>gi", function ()
-    require("gitui").open()
-end)
-
+-- LazyGit
+vim.keymap.set("n", "<leader>gi", ":LazyGit<CR>")
 vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/flavio/packer.lua<CR>");
 
 -- CellularAutomaton
@@ -56,3 +53,4 @@ vim.keymap.set("n", "<leader>gol", "<cmd>CellularAutomaton game_of_life<CR>");
 vim.keymap.set("n", "<leader>ca", function ()
    vim.lsp.buf.code_action()
 end)
+

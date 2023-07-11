@@ -1,7 +1,11 @@
 local lsp = require('lsp-zero')
 lsp.preset('recommended')
 
-lsp.setup()
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+lsp.setup{
+  capabilities = capabilities
+}
 
 vim.diagnostic.config({
   virtual_text = true,

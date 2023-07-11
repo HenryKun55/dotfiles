@@ -24,6 +24,7 @@ telescope.setup {
 
 telescope.load_extension("ui-select")
 telescope.load_extension('file_browser')
+telescope.load_extension('harpoon')
 
 vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
 vim.keymap.set('n', '<C-p>', builtin.git_files, {})

@@ -74,6 +74,12 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["Comment.nvim"] = {
+    config = { "\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0" },
+    loaded = true,
+    path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/Comment.nvim",
+    url = "https://github.com/numToStr/Comment.nvim"
+  },
   LuaSnip = {
     loaded = true,
     path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/LuaSnip",
@@ -104,6 +110,11 @@ _G.packer_plugins = {
     path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
+  ["cmp-vsnip"] = {
+    loaded = true,
+    path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/cmp-vsnip",
+    url = "https://github.com/hrsh7th/cmp-vsnip"
+  },
   cmp_luasnip = {
     loaded = true,
     path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
@@ -114,15 +125,27 @@ _G.packer_plugins = {
     path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
+  ["git-conflict.nvim"] = {
+    config = { "\27LJ\2\n:\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\17git-conflict\frequire\0" },
+    loaded = true,
+    path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/git-conflict.nvim",
+    url = "https://github.com/akinsho/git-conflict.nvim"
+  },
   ["gitsigns.nvim"] = {
     loaded = true,
     path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
-  ["gitui.nvim"] = {
+  harpoon = {
+    config = { "\27LJ\2\nä\1\0\0\a\0\n\1\0166\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0005\3\6\0006\4\3\0009\4\4\0049\4\5\4)\6\0\0B\4\2\2\23\4\0\4=\4\a\3=\3\t\2B\0\2\1K\0\1\0\tmenu\1\0\0\nwidth\1\0\0\23nvim_win_get_width\bapi\bvim\nsetup\fharpoon\frequireP\0" },
     loaded = true,
-    path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/gitui.nvim",
-    url = "https://github.com/aspeddro/gitui.nvim"
+    path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/harpoon",
+    url = "https://github.com/ThePrimeagen/harpoon"
+  },
+  ["lazygit.nvim"] = {
+    loaded = true,
+    path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/lazygit.nvim",
+    url = "https://github.com/kdheepak/lazygit.nvim"
   },
   ["lsp-zero.nvim"] = {
     loaded = true,
@@ -138,6 +161,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
+  },
+  ["moonlight.nvim"] = {
+    loaded = true,
+    path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/moonlight.nvim",
+    url = "https://github.com/shaunsingh/moonlight.nvim"
   },
   ["null-ls.nvim"] = {
     loaded = true,
@@ -189,6 +217,12 @@ _G.packer_plugins = {
     path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/prettier.nvim",
     url = "https://github.com/MunifTanjim/prettier.nvim"
   },
+  ["rest.nvim"] = {
+    config = { "\27LJ\2\n>\0\1\5\0\4\0\0066\1\0\0009\1\1\0019\1\2\0015\3\3\0\18\4\0\0D\1\3\0\1\5\0\0\ttidy\a-i\a-q\6-\vsystem\afn\bvimÅ\3\1\0\6\0\r\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0005\4\a\0003\5\b\0=\5\t\4=\4\n\3=\3\v\0024\3\0\0=\3\f\2B\0\2\1K\0\1\0\29custom_dynamic_variables\vresult\15formatters\thtml\0\1\0\1\tjson\ajq\1\0\4\17show_headers\2\22show_curl_command\1\19show_http_info\2\rshow_url\2\14highlight\1\0\2\ftimeout\3ñ\1\fenabled\2\1\0\a\renv_file\t.env\20jump_to_request\1\26result_split_in_place\1\17yank_dry_run\2\26skip_ssl_verification\1\28result_split_horizontal\1\15encode_url\2\nsetup\14rest-nvim\frequire\0" },
+    loaded = true,
+    path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/rest.nvim",
+    url = "https://github.com/rest-nvim/rest.nvim"
+  },
   ["tagalong.vim"] = {
     loaded = true,
     path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/tagalong.vim",
@@ -223,10 +257,20 @@ _G.packer_plugins = {
     path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/trouble.nvim",
     url = "https://github.com/folke/trouble.nvim"
   },
+  ["vim-aylin"] = {
+    loaded = true,
+    path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/vim-aylin",
+    url = "https://github.com/AhmedAbdulrahman/vim-aylin"
+  },
   ["vim-tmux-navigator"] = {
     loaded = true,
     path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator",
     url = "https://github.com/christoomey/vim-tmux-navigator"
+  },
+  ["vim-vsnip"] = {
+    loaded = true,
+    path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/vim-vsnip",
+    url = "https://github.com/hrsh7th/vim-vsnip"
   }
 }
 
@@ -259,10 +303,26 @@ if not vim.g.packer_custom_loader_enabled then
   vim.g.packer_custom_loader_enabled = true
 end
 
+-- Config for: git-conflict.nvim
+time([[Config for git-conflict.nvim]], true)
+try_loadstring("\27LJ\2\n:\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\17git-conflict\frequire\0", "config", "git-conflict.nvim")
+time([[Config for git-conflict.nvim]], false)
+-- Config for: Comment.nvim
+time([[Config for Comment.nvim]], true)
+try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")
+time([[Config for Comment.nvim]], false)
 -- Config for: trouble.nvim
 time([[Config for trouble.nvim]], true)
 try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
 time([[Config for trouble.nvim]], false)
+-- Config for: rest.nvim
+time([[Config for rest.nvim]], true)
+try_loadstring("\27LJ\2\n>\0\1\5\0\4\0\0066\1\0\0009\1\1\0019\1\2\0015\3\3\0\18\4\0\0D\1\3\0\1\5\0\0\ttidy\a-i\a-q\6-\vsystem\afn\bvimÅ\3\1\0\6\0\r\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0005\4\a\0003\5\b\0=\5\t\4=\4\n\3=\3\v\0024\3\0\0=\3\f\2B\0\2\1K\0\1\0\29custom_dynamic_variables\vresult\15formatters\thtml\0\1\0\1\tjson\ajq\1\0\4\17show_headers\2\22show_curl_command\1\19show_http_info\2\rshow_url\2\14highlight\1\0\2\ftimeout\3ñ\1\fenabled\2\1\0\a\renv_file\t.env\20jump_to_request\1\26result_split_in_place\1\17yank_dry_run\2\26skip_ssl_verification\1\28result_split_horizontal\1\15encode_url\2\nsetup\14rest-nvim\frequire\0", "config", "rest.nvim")
+time([[Config for rest.nvim]], false)
+-- Config for: harpoon
+time([[Config for harpoon]], true)
+try_loadstring("\27LJ\2\nä\1\0\0\a\0\n\1\0166\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0005\3\6\0006\4\3\0009\4\4\0049\4\5\4)\6\0\0B\4\2\2\23\4\0\4=\4\a\3=\3\t\2B\0\2\1K\0\1\0\tmenu\1\0\0\nwidth\1\0\0\23nvim_win_get_width\bapi\bvim\nsetup\fharpoon\frequireP\0", "config", "harpoon")
+time([[Config for harpoon]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
