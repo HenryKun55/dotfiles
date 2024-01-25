@@ -54,3 +54,8 @@ vim.keymap.set("n", "<leader>ca", function ()
    vim.lsp.buf.code_action()
 end)
 
+-- New 
+vim.keymap.set('n', '<leader>i', vim.lsp.buf.hover, bufopts)
+vim.keymap.set('n', '<leader>x', vim.diagnostic.open_float, bufopts)
+vim.keymap.set('n', '<leader>df', vim.diagnostic.goto_next, bufopts)
+vim.keymap.set('n', '<leader>fc', vim.lsp.buf.format, { noremap = true, silent = true })
