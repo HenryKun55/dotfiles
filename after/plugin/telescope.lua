@@ -1,7 +1,6 @@
+local telescope = require("telescope")
 local builtin = require('telescope.builtin')
 local trouble = require("trouble.providers.telescope")
-
-local telescope = require("telescope")
 
 function Telescope_buffer_dir()
   return vim.fn.expand('%:p:h')
@@ -18,18 +17,6 @@ telescope.setup {
     ["ui-select"] = {
       require("telescope.themes").get_dropdown {
       }
-    }
-  },
-  pickers = {
-    live_grep = {
-      file_ignore_patterns = { 'node_modules', '.git', '.venv' },
-      additional_args = function(_)
-        return { "--hidden" }
-      end
-    },
-    find_files = {
-      file_ignore_patterns = { 'node_modules', '.git', '.venv' },
-      hidden = true
     }
   }
 }

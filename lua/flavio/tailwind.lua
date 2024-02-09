@@ -1,10 +1,7 @@
-local lsp = require ("lspconfig")
+local lsp = require("lspconfig")
+local tw_highlight = require('tailwind-highlight')
 
-local on_attach = function(client, bufnr)
-  require("tailwindcss-colors").buf_attach(bufnr)
-end
-
-lsp.tailwindcss.setup{
+lsp.tailwindcss.setup {
   settings = {
     scss = { validate = false },
     editor = {
@@ -14,11 +11,11 @@ lsp.tailwindcss.setup{
     tailwindCSS = {
       experimental = {
         classRegex = {
-          'tw`([^`]*)', -- tw`...`
-          'tw="([^"]*)', -- <div tw="..." />
-          'tw={"([^"}]*)', -- <div tw={"..."} />
-          'tw\\.\\w+`([^`]*)', -- tw.xxx`...`
-          'tw\\(.*?\\)`([^`]*)', -- tw(Component)`...`
+          'tw`([^`]*)',                                                        -- tw`...`
+          'tw="([^"]*)',                                                       -- <div tw="..." />
+          'tw={"([^"}]*)',                                                     -- <div tw={"..."} />
+          'tw\\.\\w+`([^`]*)',                                                 -- tw.xxx`...`
+          'tw\\(.*?\\)`([^`]*)',                                               -- tw(Component)`...`
           { "tv\\((([^()]*|\\([^()]*\\))*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" }, -- tv({...})
         },
       },
@@ -28,6 +25,7 @@ lsp.tailwindcss.setup{
       },
     },
   },
-  on_attach = on_attach
+  on_attach = function(client, bufnr)
+    tw_highlight.setup(client, bufnr, {})
+  end
 }
-

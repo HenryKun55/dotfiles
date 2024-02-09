@@ -59,14 +59,6 @@ return require('packer').startup(function(use)
   use 'christoomey/vim-tmux-navigator'
   use 'nvim-telescope/telescope-file-browser.nvim'
 
-  use {
-    "themaxmarchuk/tailwindcss-colors.nvim",
-    module = "tailwindcss-colors",
-    config = function()
-      require("tailwindcss-colors").setup()
-    end
-  }
-
   use { 'akinsho/git-conflict.nvim', tag = "*", config = function()
     require('git-conflict').setup()
   end }
@@ -90,4 +82,5 @@ return require('packer').startup(function(use)
   }
 
   use 'wuelnerdotexe/vim-astro'
+  use "princejoogie/tailwind-highlight.nvim"
 end)
