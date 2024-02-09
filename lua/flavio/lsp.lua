@@ -3,7 +3,7 @@ lsp.preset('recommended')
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-lsp.setup{
+lsp.setup {
   capabilities = capabilities
 }
 
