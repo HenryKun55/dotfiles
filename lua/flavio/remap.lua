@@ -43,7 +43,6 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- LazyGit
 vim.keymap.set("n", "<leader>gi", ":LazyGit<CR>")
-vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/flavio/packer.lua<CR>");
 
 -- CellularAutomaton
 vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
