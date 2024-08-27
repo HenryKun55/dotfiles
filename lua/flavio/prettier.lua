@@ -12,6 +12,7 @@ prettier.setup {
     "json",
     "less",
     "markdown",
+    "python",
     "scss",
     "typescript",
     "typescriptreact",

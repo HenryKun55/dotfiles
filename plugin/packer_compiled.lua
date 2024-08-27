@@ -85,11 +85,6 @@ _G.packer_plugins = {
     path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
-  ["cellular-automaton.nvim"] = {
-    loaded = true,
-    path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/cellular-automaton.nvim",
-    url = "https://github.com/eandrju/cellular-automaton.nvim"
-  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -167,10 +162,23 @@ _G.packer_plugins = {
     path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
     url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
   },
+  ["nvim-autopairs"] = {
+    config = { "\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/opt/nvim-autopairs",
+    url = "https://github.com/windwp/nvim-autopairs"
+  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
+  },
+  ["nvim-jdtls"] = {
+    loaded = true,
+    path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/nvim-jdtls",
+    url = "https://github.com/mfussenegger/nvim-jdtls"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -211,6 +219,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/tagalong.vim",
     url = "https://github.com/AndrewRadev/tagalong.vim"
+  },
+  ["tailwind-highlight.nvim"] = {
+    loaded = true,
+    path = "/Users/flavionascimento/.local/share/nvim/site/pack/packer/start/tailwind-highlight.nvim",
+    url = "https://github.com/princejoogie/tailwind-highlight.nvim"
   },
   ["telescope-file-browser.nvim"] = {
     loaded = true,
@@ -256,14 +269,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: harpoon
-time([[Config for harpoon]], true)
-try_loadstring("\27LJ\2\nä\1\0\0\a\0\n\1\0166\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0005\3\6\0006\4\3\0009\4\4\0049\4\5\4)\6\0\0B\4\2\2\23\4\0\4=\4\a\3=\3\t\2B\0\2\1K\0\1\0\tmenu\1\0\0\nwidth\1\0\0\23nvim_win_get_width\bapi\bvim\nsetup\fharpoon\frequireP\0", "config", "harpoon")
-time([[Config for harpoon]], false)
 -- Config for: trouble.nvim
 time([[Config for trouble.nvim]], true)
 try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
 time([[Config for trouble.nvim]], false)
+-- Config for: harpoon
+time([[Config for harpoon]], true)
+try_loadstring("\27LJ\2\nä\1\0\0\a\0\n\1\0166\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0005\3\6\0006\4\3\0009\4\4\0049\4\5\4)\6\0\0B\4\2\2\23\4\0\4=\4\a\3=\3\t\2B\0\2\1K\0\1\0\tmenu\1\0\0\nwidth\1\0\0\23nvim_win_get_width\bapi\bvim\nsetup\fharpoon\frequireP\0", "config", "harpoon")
+time([[Config for harpoon]], false)
 -- Config for: Comment.nvim
 time([[Config for Comment.nvim]], true)
 try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")
@@ -272,6 +285,13 @@ time([[Config for Comment.nvim]], false)
 time([[Config for git-conflict.nvim]], true)
 try_loadstring("\27LJ\2\n:\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\17git-conflict\frequire\0", "config", "git-conflict.nvim")
 time([[Config for git-conflict.nvim]], false)
+vim.cmd [[augroup packer_load_aucmds]]
+vim.cmd [[au!]]
+  -- Event lazy-loads
+time([[Defining lazy-load event autocommands]], true)
+vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-autopairs'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
+time([[Defining lazy-load event autocommands]], false)
+vim.cmd("augroup END")
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

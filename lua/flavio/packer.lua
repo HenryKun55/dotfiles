@@ -34,7 +34,6 @@ return require('packer').startup(function(use)
   }
   use 'AndrewRadev/tagalong.vim'
   use 'kdheepak/lazygit.nvim'
-  use 'eandrju/cellular-automaton.nvim'
   use {
     "folke/trouble.nvim",
     requires = "nvim-tree/nvim-web-devicons",
@@ -55,7 +54,6 @@ return require('packer').startup(function(use)
   use 'nvim-telescope/telescope-ui-select.nvim'
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'MunifTanjim/prettier.nvim'
-  use 'lewis6991/gitsigns.nvim'
   use 'christoomey/vim-tmux-navigator'
   use 'nvim-telescope/telescope-file-browser.nvim'
 
@@ -83,4 +81,18 @@ return require('packer').startup(function(use)
 
   use 'wuelnerdotexe/vim-astro'
   use "princejoogie/tailwind-highlight.nvim"
+
+  use {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = function()
+      require("nvim-autopairs").setup {}
+    end
+  }
+
+  use "mfussenegger/nvim-jdtls"
+  use {
+    'lewis6991/gitsigns.nvim',
+    commit = "929183666540e164fa74028954ade62fa703fa1a"
+  }
 end)

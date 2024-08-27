@@ -10,3 +10,5 @@ require("flavio.cmp")
 require("flavio.astro")
 require("flavio.nullls")
 require("flavio.harpoon")
+require("flavio.java")
+

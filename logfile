@@ -1,0 +1,258 @@
+2024-07-23 15:20:01.300 -03 [15920] LOG:  starting PostgreSQL 14.12 (Homebrew) on aarch64-apple-darwin23.4.0, compiled by Apple clang version 15.0.0 (clang-1500.3.9.4), 64-bit
+2024-07-23 15:20:01.300 -03 [15920] LOG:  listening on IPv6 address "::1", port 5432
+2024-07-23 15:20:01.301 -03 [15920] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2024-07-23 15:20:01.301 -03 [15920] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2024-07-23 15:20:01.303 -03 [15921] LOG:  database system was shut down at 2024-07-23 15:19:45 -03
+2024-07-23 15:20:01.306 -03 [15920] LOG:  database system is ready to accept connections
+2024-07-23 15:20:56.425 -03 [16569] FATAL:  lock file "postmaster.pid" already exists
+2024-07-23 15:20:56.425 -03 [16569] HINT:  Is another postmaster (PID 15920) running in data directory "/usr/local/var/postgres"?
+2024-07-23 15:22:06.862 -03 [16821] FATAL:  lock file "postmaster.pid" already exists
+2024-07-23 15:22:06.862 -03 [16821] HINT:  Is another postmaster (PID 15920) running in data directory "/usr/local/var/postgres"?
+2024-07-23 15:23:45.807 -03 [16911] FATAL:  role "postgres" does not exist
+2024-07-23 15:25:51.616 -03 [17042] FATAL:  role "postgres" does not exist
+2024-07-23 15:26:11.157 -03 [17058] FATAL:  database "du" does not exist
+2024-07-23 15:26:23.402 -03 [17275] FATAL:  database "du" does not exist
+2024-07-23 15:26:30.291 -03 [17281] FATAL:  role "postgres" does not exist
+2024-07-23 15:26:54.672 -03 [17322] FATAL:  database "flavionascimento" does not exist
+2024-07-23 15:27:37.171 -03 [17364] FATAL:  role "postgres" does not exist
+2024-07-23 15:28:39.772 -03 [17432] FATAL:  role "postgres" does not exist
+2024-07-23 15:30:21.351 -03 [17609] FATAL:  database "ubots" does not exist
+2024-07-23 15:30:31.341 -03 [17628] FATAL:  database "flavionascimento" does not exist
+2024-07-23 15:31:23.921 -03 [17708] ERROR:  syntax error at or near "ls" at character 1
+2024-07-23 15:31:23.921 -03 [17708] STATEMENT:  ls
+	list databses;
+2024-07-23 15:31:30.415 -03 [17708] ERROR:  syntax error at or near "list" at character 1
+2024-07-23 15:31:30.415 -03 [17708] STATEMENT:  list databses;
+2024-07-23 15:31:34.431 -03 [17708] ERROR:  unrecognized configuration parameter "databases"
+2024-07-23 15:31:34.431 -03 [17708] STATEMENT:  show databases;
+2024-07-23 15:31:40.317 -03 [17708] ERROR:  unrecognized configuration parameter "databases"
+2024-07-23 15:31:40.317 -03 [17708] STATEMENT:  show databases;
+2024-07-23 15:40:32.965 -03 [18418] FATAL:  database "ubotss" does not exist
+2024-07-23 17:03:10.763 -03 [21225] ERROR:  cannot drop the currently open database
+2024-07-23 17:03:10.763 -03 [21225] STATEMENT:  drop database ubots;
+2024-07-23 17:47:10.881 -03 [27844] ERROR:  database "ubots" is being accessed by other users
+2024-07-23 17:47:10.881 -03 [27844] DETAIL:  There are 10 other sessions using the database.
+2024-07-23 17:47:10.881 -03 [27844] STATEMENT:  drop database ubots;
+2024-07-23 17:47:24.923 -03 [27844] ERROR:  database "ubots" already exists
+2024-07-23 17:47:24.923 -03 [27844] STATEMENT:  create database ubots;
+2024-07-24 01:15:44.562 -03 [35665] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-24 01:15:44.562 -03 [35665] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-24 01:15:44.562 -03 [35665] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-24 01:21:16.398 -03 [35665] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-24 01:21:16.398 -03 [35665] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-24 01:21:16.398 -03 [35665] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-24 01:24:29.339 -03 [36086] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-24 01:24:29.339 -03 [36086] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-24 01:24:29.339 -03 [36086] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-24 01:41:38.402 -03 [37287] ERROR:  relation "team" does not exist at character 15
+2024-07-24 01:41:38.402 -03 [37287] STATEMENT:  select * from team;
+2024-07-24 01:42:00.999 -03 [37295] ERROR:  canceling statement due to user request
+2024-07-24 01:42:00.999 -03 [37295] STATEMENT:  drop database ubots 
+	;
+2024-07-24 01:42:11.407 -03 [37295] ERROR:  database "ubots" is being accessed by other users
+2024-07-24 01:42:11.407 -03 [37295] DETAIL:  There are 10 other sessions using the database.
+2024-07-24 01:42:11.407 -03 [37295] STATEMENT:  drop database ubots;
+2024-07-24 14:21:44.242 -03 [42649] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-24 14:21:44.242 -03 [42649] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-24 14:21:44.242 -03 [42649] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-24 15:38:07.973 -03 [46708] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-24 15:38:07.973 -03 [46708] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-24 15:38:07.973 -03 [46708] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-24 15:40:49.537 -03 [47000] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-24 15:40:49.537 -03 [47000] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-24 15:40:49.537 -03 [47000] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-24 15:42:04.249 -03 [47156] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-24 15:42:04.249 -03 [47156] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-24 15:42:04.249 -03 [47156] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-24 16:00:47.590 -03 [48675] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-24 16:00:47.590 -03 [48675] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-24 16:00:47.590 -03 [48675] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-24 17:43:22.552 -03 [53191] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-24 17:43:22.552 -03 [53191] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-24 17:43:22.552 -03 [53191] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-24 17:44:14.678 -03 [53405] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-24 17:44:14.678 -03 [53405] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-24 17:44:14.678 -03 [53405] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-24 17:46:48.910 -03 [54064] FATAL:  database "ubotsl" does not exist
+2024-07-24 17:47:07.716 -03 [54065] ERROR:  relation "teams" does not exist at character 15
+2024-07-24 17:47:07.716 -03 [54065] STATEMENT:  select * from teams;
+2024-07-24 17:48:00.359 -03 [54221] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-24 17:48:00.359 -03 [54221] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-24 17:48:00.359 -03 [54221] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-24 17:56:25.330 -03 [54660] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-24 17:56:25.330 -03 [54660] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-24 17:56:25.330 -03 [54660] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-24 17:56:50.060 -03 [54750] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-24 17:56:50.060 -03 [54750] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-24 17:56:50.060 -03 [54750] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-24 19:14:12.602 -03 [56552] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-24 19:14:12.602 -03 [56552] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-24 19:14:12.602 -03 [56552] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-24 19:14:43.504 -03 [56568] ERROR:  database "ubots" does not exist
+2024-07-24 19:14:43.504 -03 [56568] STATEMENT:  drop database ubots;
+2024-07-24 19:18:12.400 -03 [57014] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-24 19:18:12.400 -03 [57014] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-24 19:18:12.400 -03 [57014] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-24 19:32:07.399 -03 [57918] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-24 19:32:07.399 -03 [57918] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-24 19:32:07.399 -03 [57918] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-24 19:34:39.529 -03 [58074] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-24 19:34:39.529 -03 [58074] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-24 19:34:39.529 -03 [58074] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-24 19:35:27.832 -03 [58110] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-24 19:35:27.832 -03 [58110] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-24 19:35:27.832 -03 [58110] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-24 19:35:38.072 -03 [58169] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-24 19:35:38.072 -03 [58169] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-24 19:35:38.072 -03 [58169] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-24 19:36:00.010 -03 [58236] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-24 19:36:00.010 -03 [58236] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-24 19:36:00.010 -03 [58236] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-24 19:38:38.070 -03 [58486] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-24 19:38:38.070 -03 [58486] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-24 19:38:38.070 -03 [58486] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-24 19:38:39.867 -03 [58519] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-24 19:38:39.867 -03 [58519] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-24 19:38:39.867 -03 [58519] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-24 19:38:41.692 -03 [58543] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-24 19:38:41.692 -03 [58543] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-24 19:38:41.692 -03 [58543] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-24 19:42:53.736 -03 [58712] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-24 19:42:53.736 -03 [58712] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-24 19:42:53.736 -03 [58712] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-24 19:43:23.790 -03 [58844] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-24 19:43:23.790 -03 [58844] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-24 19:43:23.790 -03 [58844] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-24 19:55:09.897 -03 [59387] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-24 19:55:09.897 -03 [59387] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-24 19:55:09.897 -03 [59387] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-24 20:42:39.132 -03 [62792] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-24 20:42:39.132 -03 [62792] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-24 20:42:39.132 -03 [62792] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 11:13:38.403 -03 [65778] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 11:13:38.403 -03 [65778] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 11:13:38.403 -03 [65778] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 11:15:50.946 -03 [65944] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 11:15:50.946 -03 [65944] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 11:15:50.946 -03 [65944] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 11:15:55.149 -03 [65993] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 11:15:55.149 -03 [65993] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 11:15:55.149 -03 [65993] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 11:16:48.892 -03 [66078] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 11:16:48.892 -03 [66078] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 11:16:48.892 -03 [66078] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 11:18:14.993 -03 [66171] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 11:18:14.993 -03 [66171] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 11:18:14.993 -03 [66171] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 11:19:29.958 -03 [66255] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 11:19:29.958 -03 [66255] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 11:19:29.958 -03 [66255] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 11:23:25.927 -03 [66255] ERROR:  duplicate key value violates unique constraint "ukhnwkq699wmr11q9yrwty70p83"
+2024-07-25 11:23:25.927 -03 [66255] DETAIL:  Key (client_id)=(135178fa-c918-4254-a38d-2f2352e37aed) already exists.
+2024-07-25 11:23:25.927 -03 [66255] STATEMENT:  insert into clients_attendants_issues (attendant_id,client_id,is_finished,issue_id,id) values ($1,$2,$3,$4,$5)
+2024-07-25 11:23:58.056 -03 [66255] ERROR:  duplicate key value violates unique constraint "ukhu9l69vbtnm1hci8nrg7doti"
+2024-07-25 11:23:58.056 -03 [66255] DETAIL:  Key (attendant_id)=(3dc96f57-312f-4adb-a4a5-b557c1cb24c2) already exists.
+2024-07-25 11:23:58.056 -03 [66255] STATEMENT:  insert into clients_attendants_issues (attendant_id,client_id,is_finished,issue_id,id) values ($1,$2,$3,$4,$5)
+2024-07-25 11:26:50.229 -03 [67098] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 11:26:50.229 -03 [67098] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 11:26:50.229 -03 [67098] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 11:26:59.072 -03 [67140] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 11:26:59.072 -03 [67140] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 11:26:59.072 -03 [67140] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 11:27:01.118 -03 [67140] ERROR:  duplicate key value violates unique constraint "ukhu9l69vbtnm1hci8nrg7doti"
+2024-07-25 11:27:01.118 -03 [67140] DETAIL:  Key (attendant_id)=(3dc96f57-312f-4adb-a4a5-b557c1cb24c2) already exists.
+2024-07-25 11:27:01.118 -03 [67140] STATEMENT:  insert into clients_attendants_issues (attendant_id,client_id,is_finished,issue_id,id) values ($1,$2,$3,$4,$5)
+2024-07-25 11:55:06.131 -03 [68086] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 11:55:06.131 -03 [68086] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 11:55:06.131 -03 [68086] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 11:55:27.538 -03 [68166] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 11:55:27.538 -03 [68166] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 11:55:27.538 -03 [68166] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 11:55:35.179 -03 [68216] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 11:55:35.179 -03 [68216] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 11:55:35.179 -03 [68216] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 11:56:31.467 -03 [68324] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 11:56:31.467 -03 [68324] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 11:56:31.467 -03 [68324] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 11:56:34.040 -03 [68346] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 11:56:34.040 -03 [68346] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 11:56:34.040 -03 [68346] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 12:09:41.371 -03 [68765] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 12:09:41.371 -03 [68765] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 12:09:41.371 -03 [68765] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 12:10:10.863 -03 [68820] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 12:10:10.863 -03 [68820] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 12:10:10.863 -03 [68820] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 12:13:59.916 -03 [68943] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 12:13:59.916 -03 [68943] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 12:13:59.916 -03 [68943] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 12:18:58.757 -03 [69332] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 12:18:58.757 -03 [69332] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 12:18:58.757 -03 [69332] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 12:20:35.576 -03 [69713] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 12:20:35.576 -03 [69713] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 12:20:35.576 -03 [69713] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 12:29:52.477 -03 [70202] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 12:29:52.477 -03 [70202] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 12:29:52.477 -03 [70202] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 12:31:09.495 -03 [70272] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 12:31:09.495 -03 [70272] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 12:31:09.495 -03 [70272] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 12:31:51.727 -03 [70334] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 12:31:51.727 -03 [70334] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 12:31:51.727 -03 [70334] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 12:32:11.718 -03 [70385] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 12:32:11.718 -03 [70385] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 12:32:11.718 -03 [70385] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 12:33:00.835 -03 [70453] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 12:33:00.835 -03 [70453] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 12:33:00.835 -03 [70453] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 12:33:31.918 -03 [70507] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 12:33:31.918 -03 [70507] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 12:33:31.918 -03 [70507] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 12:33:35.705 -03 [70549] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 12:33:35.705 -03 [70549] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 12:33:35.705 -03 [70549] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 12:34:14.697 -03 [70603] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 12:34:14.697 -03 [70603] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 12:34:14.697 -03 [70603] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 12:44:08.039 -03 [70938] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 12:44:08.039 -03 [70938] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 12:44:08.039 -03 [70938] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 12:44:49.274 -03 [71003] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 12:44:49.274 -03 [71003] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 12:44:49.274 -03 [71003] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 12:45:25.806 -03 [71077] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 12:45:25.806 -03 [71077] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 12:45:25.806 -03 [71077] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 12:45:46.203 -03 [71139] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 12:45:46.203 -03 [71139] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 12:45:46.203 -03 [71139] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 12:46:30.470 -03 [71208] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 12:46:30.470 -03 [71208] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 12:46:30.470 -03 [71208] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 12:46:41.324 -03 [71254] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 12:46:41.324 -03 [71254] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 12:46:41.324 -03 [71254] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 15:08:02.433 -03 [72100] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 15:08:02.433 -03 [72100] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 15:08:02.433 -03 [72100] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 15:08:59.317 -03 [72204] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 15:08:59.317 -03 [72204] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 15:08:59.317 -03 [72204] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 19:29:53.041 -03 [90235] FATAL:  database "flavionascimento" does not exist
+2024-07-25 20:14:13.693 -03 [96363] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 20:14:13.693 -03 [96363] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 20:14:13.693 -03 [96363] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 20:15:08.933 -03 [96517] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 20:15:08.933 -03 [96517] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 20:15:08.933 -03 [96517] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 20:15:49.623 -03 [96600] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 20:15:49.623 -03 [96600] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 20:15:49.623 -03 [96600] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 20:19:35.419 -03 [96699] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 20:19:35.419 -03 [96699] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 20:19:35.419 -03 [96699] STATEMENT:  insert into teams (name,id) values ($1,$2)
+2024-07-25 20:36:29.131 -03 [923] ERROR:  duplicate key value violates unique constraint "uka510no6sjwqcx153yd5sm4jrr"
+2024-07-25 20:36:29.131 -03 [923] DETAIL:  Key (name)=(Cartões) already exists.
+2024-07-25 20:36:29.131 -03 [923] STATEMENT:  insert into teams (name,id) values ($1,$2)
