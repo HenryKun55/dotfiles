@@ -95,4 +95,7 @@ return require('packer').startup(function(use)
     'lewis6991/gitsigns.nvim',
     commit = "929183666540e164fa74028954ade62fa703fa1a"
   }
+  use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" }, config = function()
+    require("dapui").setup()
+  end }
 end)

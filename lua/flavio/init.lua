@@ -11,4 +11,4 @@ require("flavio.astro")
 require("flavio.nullls")
 require("flavio.harpoon")
 require("flavio.java")
-
+require("flavio.dap-ui")
