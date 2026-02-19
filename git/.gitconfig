@@ -1,0 +1,26 @@
+[pull]
+    rebase = false
+[user]
+	name = flavio-egoeimi
+	email = flavio@egoeimi.dev
+[alias]
+  s = !git status -s
+  c = !git add . && git commit -m
+  amend = !git add . && git commit --amend --no-edit
+  l = !git log --pretty=format:'%C(blue)%h%C(red)%d %C(white)%s %C(cyan)[%cn] %C(green)%cr'
+[push]
+    default = current
+[includeIf "gitdir:~/Documents/distrito-workspace/"]
+  path = ~/Documents/distrito-workspace/.gitconfig
+[init]
+	defaultBranch = master
+[includeIf "gitdir:~/Documents/ubotsworkspace/"]
+  path = ~/Documents/ubotsworkspace/.gitconfig
+[credential]
+	helper = osxkeychain
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential

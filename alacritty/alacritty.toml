@@ -1,0 +1,103 @@
+import = [ "~/.config/alacritty/catppuccin/catppuccin-mocha.yml" ]
+live_config_reload = true
+colors.draw_bold_text_with_bright_colors = true
+
+[env]
+TERM = "xterm-256color"
+
+[window]
+opacity = 1
+
+  [window.dimensions]
+  columns = 200
+  lines = 52
+
+  [window.padding]
+  x = 5
+  y = 5
+
+[scrolling]
+history = 10_000
+multiplier = 10
+
+[selection]
+semantic_escape_chars = "|:\"' {}()[]<>"
+save_to_clipboard = true
+
+[font]
+size = 15
+
+  [font.normal]
+  family = "MesloLGS NF"
+  style = "Regular"
+
+  [font.bold]
+  family = "MesloLGS NF"
+  style = "Bold"
+
+  [font.italic]
+  family = "MesloLGS NF"
+  style = "Italic"
+
+  [font.bold_italic]
+  family = "MesloLGS NF"
+  style = "Bold Italic"
+
+[cursor]
+style = "Block"
+unfocused_hollow = true
+
+[[keyboard.bindings]]
+key = "N"
+mods = "Command"
+action = "SpawnNewInstance"
+
+[[keyboard.bindings]]
+key = "Q"
+mods = "Command"
+action = "Quit"
+
+[[keyboard.bindings]]
+key = "W"
+mods = "Command"
+action = "Quit"
+
+[[keyboard.bindings]]
+key = 36
+mods = "Command"
+action = "ToggleFullscreen"
+
+[[keyboard.bindings]]
+key = "Key6"
+mods = "Control"
+chars = "\u001b[94;5u"
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001b[13;2u"
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Control"
+chars = "\u001b[13;5u"
+
+[[keyboard.bindings]]
+key = "H"
+mods = "Control"
+chars = "\u0008" # Ctrl-h (ASCII backspace)
+
+[[keyboard.bindings]]
+key = "J"
+mods = "Control"
+chars = "\u000a" # Ctrl-j (ASCII line feed)
+
+[[keyboard.bindings]]
+key = "K"
+mods = "Control"
+chars = "\u000b" # Ctrl-k (ASCII vertical tab)
+
+[[keyboard.bindings]]
+key = "L"
+mods = "Control"
+chars = "\u000c" # Ctrl-l (ASCII form feed)
