@@ -1,11 +1,4 @@
-local lspconfig = require("lspconfig")
-
-require("lsp-zero").on_attach(
-  function(_, bufnr)
-  end
-)
-
-lspconfig.cssls.setup({
+vim.lsp.config('cssls', {
   settings = {
     css = {
       validate = true
@@ -15,6 +8,8 @@ lspconfig.cssls.setup({
     },
   }
 })
+
+vim.lsp.enable('cssls')
 
 vim.diagnostic.config({
   virtual_text = true,

@@ -1,7 +1,6 @@
-local lsp = require("lspconfig")
 local tw_highlight = require('tailwind-highlight')
 
-lsp.tailwindcss.setup {
+vim.lsp.config('tailwindcss', {
   settings = {
     scss = { validate = false },
     editor = {
@@ -28,4 +27,6 @@ lsp.tailwindcss.setup {
   on_attach = function(client, bufnr)
     tw_highlight.setup(client, bufnr, {})
   end
-}
+})
+
+vim.lsp.enable('tailwindcss')
