@@ -1,5 +1,3 @@
-import = [ "~/.config/alacritty/catppuccin/catppuccin-mocha.yml" ]
-live_config_reload = true
 colors.draw_bold_text_with_bright_colors = true
 
 [env]
@@ -28,19 +26,19 @@ save_to_clipboard = true
 size = 15
 
   [font.normal]
-  family = "MesloLGS NF"
+  family = "MesloLGS Nerd Font"
   style = "Regular"
 
   [font.bold]
-  family = "MesloLGS NF"
+  family = "MesloLGS Nerd Font"
   style = "Bold"
 
   [font.italic]
-  family = "MesloLGS NF"
+  family = "MesloLGS Nerd Font"
   style = "Italic"
 
   [font.bold_italic]
-  family = "MesloLGS NF"
+  family = "MesloLGS Nerd Font"
   style = "Bold Italic"
 
 [cursor]
@@ -101,3 +99,7 @@ chars = "\u000b" # Ctrl-k (ASCII vertical tab)
 key = "L"
 mods = "Control"
 chars = "\u000c" # Ctrl-l (ASCII form feed)
+
+[general]
+live_config_reload = true
+import = [ "~/.config/alacritty/catppuccin/catppuccin-mocha.yml" ]

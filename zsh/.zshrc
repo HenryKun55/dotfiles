@@ -44,7 +44,8 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
-export JAVA_HOME='/Applications/Android Studio.app/Contents/jbr/Contents/Home'
+export JAVA_HOME=/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home
+export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 
 # ============================================================================
 # PYTHON (PYENV)
@@ -69,11 +70,6 @@ eval "$(fnm env --use-on-cd --shell zsh)"
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
-
-# ============================================================================
-# CERTIFICATES & SECURITY
-# ============================================================================
-export NODE_EXTRA_CA_CERTS=~/.certs/BB_certs.pem
 
 # ============================================================================
 # PUPPETEER
