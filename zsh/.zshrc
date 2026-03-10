@@ -176,3 +176,12 @@ export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/b
 export PATH="$HOME/.local/bin:$PATH"
 export CLOUDSDK_PYTHON=$(which python3)
 export PATH="/opt/homebrew/share/google-cloud-sdk/bin:$PATH"
+export DEVELOPER_DIR=/Applications/Xcode-26.3.0.app/Contents/Developer
+
+# pnpm
+export PNPM_HOME="/Users/flaviohenriquedonascimentoandrade/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
