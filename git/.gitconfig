@@ -1,8 +1,8 @@
 [pull]
     rebase = false
 [user]
-	name = flavio-egoeimi
-	email = flavio@egoeimi.dev
+	name = HenryKun55
+	email = henriqueflavio55@gmail.com
 [alias]
   s = !git status -s
   c = !git add . && git commit -m
