@@ -4,7 +4,7 @@ M.setup = function() end
 
 -- Verifica se uma branch/ref existe
 local function ref_exists(ref)
-    local result = vim.fn.system("git rev-parse --verify " .. ref .. " 2>/dev/null")
+    vim.fn.system({ 'git', 'rev-parse', '--verify', ref })
     return vim.v.shell_error == 0
 end
 
@@ -40,8 +40,7 @@ M.git_diff = function(target_branch)
     end
 
     -- Executa git diff --name-only
-    local cmd = "git diff --name-only " .. target_branch .. "...HEAD"
-    local output = vim.fn.systemlist(cmd)
+    local output = vim.fn.systemlist({ 'git', 'diff', '--name-only', target_branch .. '...HEAD' })
 
     if vim.v.shell_error ~= 0 then
         vim.notify("Erro ao executar git diff", vim.log.levels.ERROR)
@@ -94,7 +93,7 @@ M.git_diff = function(target_branch)
         local line = vim.api.nvim_get_current_line()
         if line ~= "" and not line:match("^#") and not line:match("^Nenhum") then
             vim.cmd('bdelete')
-            vim.cmd('edit ' .. line)
+            vim.cmd('edit ' .. vim.fn.fnameescape(line))
         end
     end, opts)
 end
@@ -108,4 +107,3 @@ end, { nargs = '?' })
 vim.keymap.set('n', '<leader>gd', ':GitDiff<CR>', { noremap = true, silent = true })
 
 return M
-
