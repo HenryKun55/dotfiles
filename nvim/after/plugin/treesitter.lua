@@ -1,5 +1,5 @@
 -- Configure treesitter and install desired parsers
-require("nvim-treesitter.configs").setup({
+require("nvim-treesitter.config").setup({
   ensure_installed = {
     "javascript",
     "typescript",
