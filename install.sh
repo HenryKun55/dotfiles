@@ -87,6 +87,20 @@ else
   info "TPM already installed."
 fi
 
+# ── Node.js (NVM) ─────────────────────────────────────────────────
+if [[ -s "/opt/homebrew/opt/nvm/nvm.sh" ]]; then
+  source "/opt/homebrew/opt/nvm/nvm.sh"
+  if nvm version default &>/dev/null && [[ "$(nvm version default)" != "N/A" ]]; then
+    info "NVM default already set: $(nvm version default)"
+  else
+    info "Installing Node.js LTS via NVM..."
+    nvm install --lts
+    info "Node $(nvm version) set as default."
+  fi
+else
+  warn "NVM not found, skipping Node.js install."
+fi
+
 # ── Done ────────────────────────────────────────────────────────────
 echo ""
 info "Setup complete!"

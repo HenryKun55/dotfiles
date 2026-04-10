@@ -140,13 +140,15 @@ bindkey '^[f' forward-word                # Alt+F vai para próxima palavra
 eval "$(zoxide init zsh)"
 
 # bun completions
-[ -s "/Users/flavio-ego-eimi/.bun/_bun" ] && source "/Users/flavio-ego-eimi/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-alias air='$(go env GOPATH)/bin/air'
-export PATH=$PATH:$(go env GOPATH)/bin/
+if command -v go &>/dev/null; then
+  alias air='$(go env GOPATH)/bin/air'
+  export PATH=$PATH:$(go env GOPATH)/bin/
+fi
 
 # Detecta e usa automaticamente a versão do Node especificada no .nvmrc
 autoload -U add-zsh-hook
@@ -176,10 +178,10 @@ export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/b
 export PATH="$HOME/.local/bin:$PATH"
 export CLOUDSDK_PYTHON=$(which python3)
 export PATH="/opt/homebrew/share/google-cloud-sdk/bin:$PATH"
-export DEVELOPER_DIR=/Applications/Xcode-26.3.0.app/Contents/Developer
+export DEVELOPER_DIR=/Library/Developer/CommandLineTools
 
 # pnpm
-export PNPM_HOME="/Users/flaviohenriquedonascimentoandrade/Library/pnpm"
+export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;

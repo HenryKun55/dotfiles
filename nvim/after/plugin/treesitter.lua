@@ -1,18 +1,21 @@
--- Install desired parsers (skips already installed)
-require("nvim-treesitter").install({
-  "javascript",
-  "typescript",
-  "rust",
-  "c",
-  "lua",
-  "http",
-  "json",
-  "markdown",
-  "python",
-  "vimdoc",
-  "luadoc",
-  "vim",
-  "prisma",
+-- Configure treesitter and install desired parsers
+require("nvim-treesitter.config").setup({
+  ensure_installed = {
+    "javascript",
+    "typescript",
+    "rust",
+    "c",
+    "lua",
+    "http",
+    "json",
+    "markdown",
+    "python",
+    "vimdoc",
+    "luadoc",
+    "vim",
+    "prisma",
+  },
+  auto_install = true,
 })
 
 -- Enable treesitter highlight for non-bundled parsers
