@@ -12,9 +12,16 @@ require("nvim-treesitter").install({
   "vimdoc",
   "luadoc",
   "vim",
+  "prisma",
 })
 
--- Treesitter highlight is enabled by default in Neovim 0.11+
+-- Enable treesitter highlight for non-bundled parsers
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "prisma",
+  callback = function()
+    vim.treesitter.start()
+  end,
+})
 
 -- Autotag setup (separate from treesitter now)
 require("nvim-ts-autotag").setup()

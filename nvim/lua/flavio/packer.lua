@@ -123,12 +123,7 @@ return require('packer').startup(function(use)
     end
   }
 
-  -- Formatter / Linter
-  use {
-    'nvimtools/none-ls.nvim',
-    requires = { 'nvimtools/none-ls-extras.nvim' },
-  }
-
+  -- Formatter
   use 'MunifTanjim/prettier.nvim'
 
   --[[
