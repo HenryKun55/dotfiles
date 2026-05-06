@@ -48,39 +48,37 @@ export JAVA_HOME=/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home
 export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 
 # ============================================================================
-# PYTHON (PYENV)
+# PYTHON (PYENV) — lazy-init, shims sempre no PATH
 # ============================================================================
 export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+export PATH="$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"
+pyenv() { unset -f pyenv; eval "$(command pyenv init -)"; pyenv "$@"; }
 
 # ============================================================================
-# RUBY (RBENV)
+# RUBY (RBENV) — lazy-init, shims sempre no PATH
 # ============================================================================
-eval "$(rbenv init - zsh)"
+export PATH="$HOME/.rbenv/shims:$PATH"
+rbenv() { unset -f rbenv; eval "$(command rbenv init - zsh)"; rbenv "$@"; }
 
 # ============================================================================
-# NODE.JS (FNM & NVM)
+# NODE.JS (FNM)
 # ============================================================================
-# FNM (Fast Node Manager)
+# FNM (Fast Node Manager) — gerencia versões automaticamente com --use-on-cd.
+# nvm foi removido por redundância: fnm cobre o mesmo caso de uso e é instantâneo.
 export PATH=$PATH:$HOME/.local/share/fnm/node-versions/v14.21.3/installation/bin
 eval "$(fnm env --use-on-cd --shell zsh)"
-
-# NVM (Node Version Manager)
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
 # ============================================================================
 # PUPPETEER
 # ============================================================================
 export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
-export PUPPETEER_EXECUTABLE_PATH=$(which chromium)
 
 # ============================================================================
-# ITERM2 INTEGRATION
+# ITERM2 INTEGRATION (só carrega quando estiver no iTerm2)
 # ============================================================================
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+if [[ "$LC_TERMINAL" == "iTerm2" ]]; then
+  test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+fi
 
 # ============================================================================
 # ALIASES
@@ -135,9 +133,18 @@ bindkey '^[[F' autosuggest-accept         # End aceita a sugestão
 bindkey '^[f' forward-word                # Alt+F vai para próxima palavra
 
 # ============================================================================
-# ZOXIDE (carregar por último)
+# ZOXIDE (carregar por último) — saída cacheada em $XDG_CACHE_HOME/zsh/
 # ============================================================================
-eval "$(zoxide init zsh)"
+_cached_init() {
+  local cmd_name=$1; shift
+  local cache="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/${cmd_name}.zsh"
+  [[ -d "${cache:h}" ]] || mkdir -p "${cache:h}"
+  if [[ ! -s $cache || $(command -v $cmd_name) -nt $cache ]]; then
+    "$cmd_name" "$@" > $cache
+  fi
+  source $cache
+}
+_cached_init zoxide init zsh
 
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
@@ -150,33 +157,14 @@ if command -v go &>/dev/null; then
   export PATH=$PATH:$(go env GOPATH)/bin/
 fi
 
-# Detecta e usa automaticamente a versão do Node especificada no .nvmrc
-autoload -U add-zsh-hook
-load-nvmrc() {
-  local node_version="$(nvm version)"
-  local nvmrc_path="$(nvm_find_nvmrc)"
-
-  if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-
-    if [ "$nvmrc_node_version" = "N/A" ]; then
-      nvm install
-    elif [ "$nvmrc_node_version" != "$node_version" ]; then
-      nvm use
-    fi
-  elif [ "$node_version" != "$(nvm version default)" ]; then
-    echo "Reverting to nvm default version"
-    nvm use default
-  fi
-}
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
+# Detecção automática de versão Node por diretório:
+# delegada ao fnm via `--use-on-cd` (configurado no bloco FNM acima).
 
 # Add Visual Studio Code (code)
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 export PATH="$HOME/.local/bin:$PATH"
-export CLOUDSDK_PYTHON=$(which python3)
+export CLOUDSDK_PYTHON=/usr/bin/python3
 export PATH="/opt/homebrew/share/google-cloud-sdk/bin:$PATH"
 export DEVELOPER_DIR=/Library/Developer/CommandLineTools
 
@@ -188,3 +176,10 @@ case ":$PATH:" in
 esac
 # pnpm end
 unset DEVELOPER_DIR
+
+# ============================================================================
+# ZCOMPILE — recompila .zshrc em bytecode quando ele muda
+# ============================================================================
+if [[ ~/.zshrc -nt ~/.zshrc.zwc || ! -s ~/.zshrc.zwc ]]; then
+  zcompile ~/.zshrc 2>/dev/null
+fi
