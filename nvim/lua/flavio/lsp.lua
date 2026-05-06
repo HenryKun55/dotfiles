@@ -17,7 +17,9 @@ vim.lsp.config('ts_ls', {
 
 vim.lsp.config('vue_ls', {})
 
-vim.lsp.enable({ 'ts_ls', 'vue_ls' })
+vim.lsp.config('laravel_ls', {})
+
+vim.lsp.enable({ 'ts_ls', 'vue_ls', 'laravel_ls' })
 
 vim.lsp.config('cssls', {
   settings = {
@@ -34,8 +36,16 @@ vim.lsp.enable('cssls')
 
 vim.diagnostic.config({
   virtual_text = true,
-  signs = true,
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = '●',
+      [vim.diagnostic.severity.WARN]  = '●',
+      [vim.diagnostic.severity.INFO]  = '●',
+      [vim.diagnostic.severity.HINT]  = '●',
+    },
+  },
   update_in_insert = false,
   underline = true,
   severity_sort = false,
 })
+

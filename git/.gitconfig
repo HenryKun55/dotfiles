@@ -16,10 +16,12 @@
 	defaultBranch = master
 [includeIf "gitdir:~/Documents/ubotsworkspace/"]
   path = ~/Documents/ubotsworkspace/.gitconfig
+[includeIf "gitdir:~/Documents/workspace/egoeimi/"]
+  path = ~/Documents/workspace/egoeimi/.gitconfig
 [credential]
 	helper = osxkeychain
 [credential "https://github.com"]
-	helper = 
+	helper =
 	helper = !/opt/homebrew/bin/gh auth git-credential
 [credential "https://gist.github.com"]
 	helper = 

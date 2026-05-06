@@ -179,9 +179,18 @@ require("lazy").setup({
           "vimdoc",
           "luadoc",
           "vim",
+          "prisma",
         },
         auto_install = true,
       })
+
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "prisma",
+        callback = function()
+          vim.treesitter.start()
+        end,
+      })
+
       require("nvim-ts-autotag").setup()
     end,
   },
@@ -411,13 +420,8 @@ require("lazy").setup({
   },
 
   -- ============================================================
-  -- Formatter / Linter
+  -- Formatter
   -- ============================================================
-  {
-    "nvimtools/none-ls.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = { "nvimtools/none-ls-extras.nvim" },
-  },
   {
     "MunifTanjim/prettier.nvim",
     ft = {
