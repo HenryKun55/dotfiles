@@ -19,7 +19,7 @@ brew "antigen"
 brew "fnm"
 brew "pyenv"
 brew "rbenv"
-brew "openjdk@17"      # Java para Android dev / JAVA_HOME no zshrc
+# openjdk@17: opt-in via install.sh (perguntado, ~500MB, só pra Android/JVM dev)
 # bun: instalado via install.sh (curl) — não tem fórmula oficial
 
 # ── Dev tools ───────────────────────────────────────────────────────

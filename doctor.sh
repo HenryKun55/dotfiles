@@ -6,9 +6,10 @@ set -u
 
 GREEN='\033[0;32m'; YELLOW='\033[1;33m'; RED='\033[0;31m'; BLUE='\033[0;34m'; NC='\033[0m'
 
-ok()    { printf "  ${GREEN}✓${NC}  %s\n" "$1"; }
-miss()  { printf "  ${RED}✗${NC}  %s${YELLOW}%s${NC}\n" "$1" "${2:+  → $2}"; MISSING=$((MISSING+1)); }
-hdr()   { printf "\n${BLUE}── %s ──${NC}\n" "$1"; }
+ok()      { printf "  ${GREEN}✓${NC}  %s\n" "$1"; }
+miss()    { printf "  ${RED}✗${NC}  %s${YELLOW}%s${NC}\n" "$1" "${2:+  → $2}"; MISSING=$((MISSING+1)); }
+skipped() { printf "  ${BLUE}○${NC}  %s ${YELLOW}(optional, not installed)${NC}${BLUE}%s${NC}\n" "$1" "${2:+  → $2}"; }
+hdr()     { printf "\n${BLUE}── %s ──${NC}\n" "$1"; }
 
 MISSING=0
 
@@ -65,7 +66,13 @@ hdr "Runtimes & version managers"
 check_bin fnm    "brew install fnm"
 check_bin pyenv  "brew install pyenv"
 check_bin rbenv  "brew install rbenv"
-check_dir /opt/homebrew/opt/openjdk@17 "brew install openjdk@17"
+
+# openjdk@17 é opt-in (install.sh pergunta). Ausência aqui é normal.
+if [[ -d /opt/homebrew/opt/openjdk@17 ]]; then
+  ok "/opt/homebrew/opt/openjdk@17"
+else
+  skipped "/opt/homebrew/opt/openjdk@17" "brew install openjdk@17 (só pra Android/JVM)"
+fi
 
 if command -v fnm &>/dev/null; then
   installed=$(fnm list 2>/dev/null | grep -E 'v[0-9]+' | wc -l | tr -d ' ')

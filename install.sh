@@ -14,6 +14,17 @@ info()  { echo -e "${GREEN}[dotfiles]${NC} $1"; }
 warn()  { echo -e "${YELLOW}[dotfiles]${NC} $1"; }
 error() { echo -e "${RED}[dotfiles]${NC} $1"; }
 
+# y/N prompt — default no, auto-no se rodar sem TTY (CI, pipe, etc).
+ask_yn() {
+  local question=$1
+  if [[ ! -t 0 ]]; then
+    info "Non-interactive: skipping '$question'"
+    return 1
+  fi
+  read -r -p "$(echo -e "${YELLOW}[?]${NC} $question [y/N] ")" response
+  [[ "$response" =~ ^[Yy]$ ]]
+}
+
 # ── macOS check ─────────────────────────────────────────────────────
 if [[ "$(uname)" != "Darwin" ]]; then
   error "This script only supports macOS."
@@ -35,6 +46,15 @@ if [[ -f "$DOTFILES/Brewfile" ]]; then
   brew bundle --file="$DOTFILES/Brewfile" || warn "Some brew packages failed to install. Check output above."
 else
   warn "Brewfile not found, skipping."
+fi
+
+# ── Optional: Java (openjdk@17) ────────────────────────────────────
+# Pesado (~500MB) e só usado pra Android/JVM. Pergunta antes de instalar.
+if [[ -d /opt/homebrew/opt/openjdk@17 ]]; then
+  info "openjdk@17 already installed."
+elif ask_yn "Set up Java (openjdk@17) for Android/JVM dev?"; then
+  info "Installing openjdk@17..."
+  brew install openjdk@17 || warn "openjdk@17 install failed."
 fi
 
 # ── Helper: backup and symlink ──────────────────────────────────────
