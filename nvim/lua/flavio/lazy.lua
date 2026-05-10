@@ -165,23 +165,20 @@ require("lazy").setup({
     event = { "BufReadPost", "BufNewFile" },
     dependencies = { "windwp/nvim-ts-autotag" },
     config = function()
-      require("nvim-treesitter.config").setup({
-        ensure_installed = {
-          "javascript",
-          "typescript",
-          "rust",
-          "c",
-          "lua",
-          "http",
-          "json",
-          "markdown",
-          "python",
-          "vimdoc",
-          "luadoc",
-          "vim",
-          "prisma",
-        },
-        auto_install = true,
+      require("nvim-treesitter").install({
+        "javascript",
+        "typescript",
+        "rust",
+        "c",
+        "lua",
+        "http",
+        "json",
+        "markdown",
+        "python",
+        "vimdoc",
+        "luadoc",
+        "vim",
+        "prisma",
       })
 
       vim.api.nvim_create_autocmd("FileType", {
