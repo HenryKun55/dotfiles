@@ -7,12 +7,19 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # ============================================================================
+# HELPERS — só adiciona ao PATH/sourceia se o destino existir.
+# Mantém o zshrc utilizável mesmo em máquinas onde algumas ferramentas faltam.
+# ============================================================================
+_path_prepend() { [[ -d $1 ]] && export PATH="$1:$PATH"; }
+_path_append()  { [[ -d $1 ]] && export PATH="$PATH:$1"; }
+_source_if()    { [[ -r $1 ]] && source "$1"; }
+_have()         { command -v "$1" &>/dev/null; }
+
+# ============================================================================
 # POWERLEVEL10K THEME
 # ============================================================================
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
-
-# Configura Powerlevel10k
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+_source_if /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+_source_if ~/.p10k.zsh
 
 # ============================================================================
 # HISTORY CONFIGURATION
@@ -39,34 +46,40 @@ export LANG="en_US.UTF-8"
 # ANDROID DEVELOPMENT
 # ============================================================================
 export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
-export JAVA_HOME=/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home
-export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
+_path_append "$ANDROID_HOME/emulator"
+_path_append "$ANDROID_HOME/platform-tools"
+_path_append "$ANDROID_HOME/cmdline-tools/latest/bin"
+
+if [[ -d /opt/homebrew/opt/openjdk@17 ]]; then
+  export JAVA_HOME=/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home
+  _path_prepend /opt/homebrew/opt/openjdk@17/bin
+fi
 
 # ============================================================================
-# PYTHON (PYENV) — lazy-init, shims sempre no PATH
+# PYTHON (PYENV) — lazy-init, shims no PATH se existirem
 # ============================================================================
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"
-pyenv() { unset -f pyenv; eval "$(command pyenv init -)"; pyenv "$@"; }
+if _have pyenv; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  _path_prepend "$PYENV_ROOT/shims"
+  pyenv() { unset -f pyenv; eval "$(command pyenv init -)"; pyenv "$@"; }
+fi
 
 # ============================================================================
-# RUBY (RBENV) — lazy-init, shims sempre no PATH
+# RUBY (RBENV) — lazy-init, shims no PATH se existirem
 # ============================================================================
-export PATH="$HOME/.rbenv/shims:$PATH"
-rbenv() { unset -f rbenv; eval "$(command rbenv init - zsh)"; rbenv "$@"; }
+if _have rbenv; then
+  _path_prepend "$HOME/.rbenv/shims"
+  rbenv() { unset -f rbenv; eval "$(command rbenv init - zsh)"; rbenv "$@"; }
+fi
 
 # ============================================================================
 # NODE.JS (FNM)
 # ============================================================================
 # FNM (Fast Node Manager) — gerencia versões automaticamente com --use-on-cd.
 # nvm foi removido por redundância: fnm cobre o mesmo caso de uso e é instantâneo.
-export PATH=$PATH:$HOME/.local/share/fnm/node-versions/v14.21.3/installation/bin
-eval "$(fnm env --use-on-cd --shell zsh)"
+if _have fnm; then
+  eval "$(fnm env --use-on-cd --shell zsh)"
+fi
 
 # ============================================================================
 # PUPPETEER
@@ -144,49 +157,53 @@ _cached_init() {
   fi
   source $cache
 }
-_cached_init zoxide init zsh
+if _have zoxide; then
+  _cached_init zoxide init zsh
+fi
 
 # bun completions
-[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+_source_if "$HOME/.bun/_bun"
 
 # bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-if command -v go &>/dev/null; then
+if [[ -d "$HOME/.bun" ]]; then
+  export BUN_INSTALL="$HOME/.bun"
+  _path_prepend "$BUN_INSTALL/bin"
+fi
+
+if _have go; then
   alias air='$(go env GOPATH)/bin/air'
-  export PATH=$PATH:$(go env GOPATH)/bin/
+  _path_append "$(go env GOPATH)/bin"
 fi
 
 # Detecção automática de versão Node por diretório:
 # delegada ao fnm via `--use-on-cd` (configurado no bloco FNM acima).
 
-# Add Visual Studio Code (code)
-export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-
-export PATH="$HOME/.local/bin:$PATH"
-export CLOUDSDK_PYTHON=/usr/bin/python3
-export PATH="/opt/homebrew/share/google-cloud-sdk/bin:$PATH"
-export DEVELOPER_DIR=/Library/Developer/CommandLineTools
+_path_prepend "$HOME/.local/bin"
+[[ -x /usr/bin/python3 ]] && export CLOUDSDK_PYTHON=/usr/bin/python3
+_path_prepend /opt/homebrew/share/google-cloud-sdk/bin
 
 # pnpm
-export PNPM_HOME="$HOME/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
+if [[ -d "$HOME/Library/pnpm" ]]; then
+  export PNPM_HOME="$HOME/Library/pnpm"
+  case ":$PATH:" in
+    *":$PNPM_HOME:"*) ;;
+    *) export PATH="$PNPM_HOME:$PATH" ;;
+  esac
+fi
 # pnpm end
-unset DEVELOPER_DIR
 
 # ============================================================================
 # HERD-LITE (PHP)
 # ============================================================================
-export PATH="$HOME/.config/herd-lite/bin:$PATH"
-export PHP_INI_SCAN_DIR="$HOME/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
+if [[ -d "$HOME/.config/herd-lite/bin" ]]; then
+  _path_prepend "$HOME/.config/herd-lite/bin"
+  export PHP_INI_SCAN_DIR="$HOME/.config/herd-lite/bin:${PHP_INI_SCAN_DIR:-}"
+fi
 
 # ============================================================================
 # MAESTRO
 # ============================================================================
-export PATH="$PATH:$HOME/.maestro/bin"
+_path_append "$HOME/.maestro/bin"
 
 # ============================================================================
 # ZCOMPILE — recompila .zshrc em bytecode quando ele muda

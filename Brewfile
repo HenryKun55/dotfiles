@@ -17,10 +17,10 @@ brew "antigen"
 
 # ── Runtimes ────────────────────────────────────────────────────────
 brew "fnm"
-brew "nvm"
 brew "pyenv"
 brew "rbenv"
-# bun: install via https://bun.sh/docs/installation
+brew "openjdk@17"      # Java para Android dev / JAVA_HOME no zshrc
+# bun: instalado via install.sh (curl) — não tem fórmula oficial
 
 # ── Dev tools ───────────────────────────────────────────────────────
 brew "prettierd"

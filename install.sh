@@ -87,25 +87,50 @@ else
   info "TPM already installed."
 fi
 
-# ── Node.js (NVM) ─────────────────────────────────────────────────
-if [[ -s "/opt/homebrew/opt/nvm/nvm.sh" ]]; then
-  source "/opt/homebrew/opt/nvm/nvm.sh"
-  if nvm version default &>/dev/null && [[ "$(nvm version default)" != "N/A" ]]; then
-    info "NVM default already set: $(nvm version default)"
+# ── Node.js (fnm) ─────────────────────────────────────────────────
+if command -v fnm &>/dev/null; then
+  eval "$(fnm env --shell bash)"
+  if fnm current &>/dev/null && [[ "$(fnm current)" != "none" ]]; then
+    info "fnm default already set: $(fnm current)"
   else
-    info "Installing Node.js LTS via NVM..."
-    nvm install --lts
-    info "Node $(nvm version) set as default."
+    info "Installing Node.js LTS via fnm..."
+    fnm install --lts
+    fnm default lts-latest
+    info "Node $(fnm current) set as default."
   fi
 else
-  warn "NVM not found, skipping Node.js install."
+  warn "fnm not found, skipping Node.js install."
+fi
+
+# ── Bun ─────────────────────────────────────────────────────────────
+if [[ ! -d "$HOME/.bun" ]]; then
+  info "Installing Bun..."
+  curl -fsSL https://bun.sh/install | bash || warn "Bun install failed."
+else
+  info "Bun already installed."
+fi
+
+# ── Tmux plugins (via TPM, headless) ───────────────────────────────
+if [[ -x "$TPM_DIR/bin/install_plugins" ]]; then
+  info "Installing tmux plugins via TPM..."
+  "$TPM_DIR/bin/install_plugins" || warn "TPM install_plugins reported a problem."
+else
+  warn "TPM not executable, skipping tmux plugin install."
+fi
+
+# ── Neovim plugins (lazy.nvim bootstrap + sync, headless) ──────────
+if command -v nvim &>/dev/null; then
+  info "Bootstrapping nvim plugins via lazy.nvim (headless, may take 1-2 min)..."
+  nvim --headless "+Lazy! sync" +qa 2>&1 | tail -3 || warn "nvim plugin sync reported a problem."
+else
+  warn "nvim not found, skipping plugin sync."
 fi
 
 # ── Done ────────────────────────────────────────────────────────────
 echo ""
 info "Setup complete!"
 echo ""
-warn "Next steps:"
-echo "  1. Open tmux and press prefix + I to install tmux plugins"
-echo "  2. Open nvim and run :PackerSync to install neovim plugins"
+warn "Recommended:"
+echo "  • Run ./doctor.sh to verify everything is in place"
+echo "  • Restart your shell (or 'exec zsh') to pick up the new config"
 echo ""
