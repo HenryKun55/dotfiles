@@ -102,6 +102,34 @@ alias cls='clear'
 alias history='history 1'
 alias kodiak-launcher=~/.local/bin/kodiak-launcher
 
+# iOS Simulator — boota um device com iOS 18.6 e abre o Simulator.app.
+# Uso: simulator                       (default: iPhone 16 Pro)
+#      simulator "iPhone 16"           (qualquer nome listado em `xcrun simctl list devices`)
+simulator() {
+  local device="${1:-iPhone 16 Pro}"
+  local runtime="iOS 18.6"
+
+  if ! command -v xcrun &>/dev/null; then
+    print -u2 "Xcode não encontrado. Instale pela App Store."
+    return 1
+  fi
+
+  local udid
+  udid=$(xcrun simctl list devices "$runtime" available 2>/dev/null \
+    | grep -E "^[[:space:]]+${device} \(" \
+    | head -1 \
+    | grep -oE '[A-F0-9]{8}-[A-F0-9]{4}-[A-F0-9]{4}-[A-F0-9]{4}-[A-F0-9]{12}')
+
+  if [[ -z "$udid" ]]; then
+    print -u2 "Nenhum '$device' com $runtime disponível."
+    print -u2 "Em Xcode > Settings > Platforms, instale o runtime iOS 18.6."
+    return 1
+  fi
+
+  xcrun simctl boot "$udid" 2>/dev/null
+  open -a Simulator
+}
+
 # ============================================================================
 # ZSH PLUGINS (carregar antes dos key bindings)
 # ============================================================================
@@ -211,3 +239,7 @@ _path_append "$HOME/.maestro/bin"
 if [[ ~/.zshrc -nt ~/.zshrc.zwc || ! -s ~/.zshrc.zwc ]]; then
   zcompile ~/.zshrc 2>/dev/null
 fi
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

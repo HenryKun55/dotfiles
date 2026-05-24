@@ -25,6 +25,7 @@ brew "rbenv"
 # ── Dev tools ───────────────────────────────────────────────────────
 brew "prettierd"
 brew "lua-language-server"
+brew "tree-sitter-cli"
 brew "cmake"
 
 # ── Casks ───────────────────────────────────────────────────────────

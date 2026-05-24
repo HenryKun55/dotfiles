@@ -56,6 +56,7 @@ check_bin fzf      "brew install fzf"
 check_bin zoxide   "brew install zoxide"
 check_bin prettierd "brew install prettierd"
 check_bin lua-language-server "brew install lua-language-server"
+check_bin tree-sitter "brew install tree-sitter-cli"
 
 hdr "Shell extras"
 check_file /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme   "brew install powerlevel10k"
