@@ -101,7 +101,8 @@ alias pip="pip3"
 alias cls='clear'
 alias history='history 1'
 alias kodiak-launcher=~/.local/bin/kodiak-launcher
-
+alias ta='tmux attach'
+alias tn='tmux new -s' 
 # iOS Simulator — boota um device com iOS 18.6 e abre o Simulator.app.
 # Uso: simulator                       (default: iPhone 16 Pro)
 #      simulator "iPhone 16"           (qualquer nome listado em `xcrun simctl list devices`)
@@ -232,6 +233,13 @@ fi
 # MAESTRO
 # ============================================================================
 _path_append "$HOME/.maestro/bin"
+
+# ============================================================================
+# TPICK — terminal theme picker
+# ============================================================================
+export TPICK_DIR="$HOME/Documents/workspace/tpick"
+export TPICK_THEMES_DIR="$HOME/.config/alacritty/themes"
+[[ -f "$TPICK_DIR/tpick.sh" ]] && source "$TPICK_DIR/tpick.sh"
 
 # ============================================================================
 # ZCOMPILE — recompila .zshrc em bytecode quando ele muda

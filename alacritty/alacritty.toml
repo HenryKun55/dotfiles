@@ -1,5 +1,5 @@
 [general]
-import = [ "~/.config/alacritty/catppuccin-mocha.toml" ]
+import = ["/Users/flaviohenriquedonascimentoandrade/.config/alacritty/themes/tokyo_night_storm.toml"]
 live_config_reload = true
 
 [env]

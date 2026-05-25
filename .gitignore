@@ -1,3 +1,4 @@
 nvim/plugin/packer_compiled.lua
 nvim/gitsigns_issue/
 .DS_Store
+alacritty/themes/
