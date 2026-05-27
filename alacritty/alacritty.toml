@@ -1,5 +1,5 @@
 [general]
-import = ["/Users/flaviohenriquedonascimentoandrade/.config/alacritty/themes/tokyo_night_storm.toml"]
+import = ["/Users/flaviohenriquedonascimentoandrade/.config/alacritty/themes/afterglow.toml"]
 live_config_reload = true
 
 [env]

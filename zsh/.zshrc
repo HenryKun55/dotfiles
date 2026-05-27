@@ -235,13 +235,6 @@ fi
 _path_append "$HOME/.maestro/bin"
 
 # ============================================================================
-# TPICK — terminal theme picker
-# ============================================================================
-export TPICK_DIR="$HOME/Documents/workspace/tpick"
-export TPICK_THEMES_DIR="$HOME/.config/alacritty/themes"
-[[ -f "$TPICK_DIR/tpick.sh" ]] && source "$TPICK_DIR/tpick.sh"
-
-# ============================================================================
 # ZCOMPILE — recompila .zshrc em bytecode quando ele muda
 # ============================================================================
 if [[ ~/.zshrc -nt ~/.zshrc.zwc || ! -s ~/.zshrc.zwc ]]; then
@@ -251,3 +244,6 @@ fi
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# tpick — terminal theme picker
+source "$HOME/.tpick/tpick.sh"
