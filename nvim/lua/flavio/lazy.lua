@@ -21,7 +21,12 @@ require("lazy").setup({
     event = { "BufReadPre", "BufNewFile" },
     dependencies = { "williamboman/mason.nvim", "neovim/nvim-lspconfig" },
     config = function()
-      require("mason-lspconfig").setup({ automatic_installation = true })
+      -- mason-lspconfig v2: `automatic_installation` foi removido.
+      -- Use `ensure_installed` (nomes lspconfig) para instalar os servers.
+      -- `automatic_enable` (default true) chama vim.lsp.enable nos instalados.
+      require("mason-lspconfig").setup({
+        ensure_installed = { "tailwindcss", "ts_ls", "vue_ls", "cssls" },
+      })
     end,
   },
   {
@@ -386,16 +391,10 @@ require("lazy").setup({
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = true,
   },
-  {
-    "numToStr/Comment.nvim",
-    keys = {
-      { "gc", mode = { "n", "v" } },
-      { "gb", mode = { "n", "v" } },
-      { "gcc" },
-      { "gbc" },
-    },
-    config = true,
-  },
+  -- Comentários: usa o suporte NATIVO do Neovim (>= 0.10): gc, gcc, gb, gbc.
+  -- O Comment.nvim foi removido — está sem manutenção e quebra no Neovim 0.12
+  -- (vim.treesitter.get_parser passou a retornar nil p/ filetypes sem parser,
+  -- ex.: `conf`/hosts, causando "attempt to index nil" em ft.lua).
   {
     "ThePrimeagen/harpoon",
     keys = {
