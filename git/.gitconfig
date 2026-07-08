@@ -18,6 +18,8 @@
   path = ~/Documents/ubotsworkspace/.gitconfig
 [includeIf "gitdir:~/Documents/workspace/egoeimi/"]
   path = ~/Documents/workspace/egoeimi/.gitconfig
+[includeIf "gitdir:~/Documents/bbs/"]
+  path = ~/Documents/bbs/.gitconfig
 [credential]
 	helper = osxkeychain
 [credential "https://github.com"]
