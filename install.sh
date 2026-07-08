@@ -130,6 +130,29 @@ else
   info "Bun already installed."
 fi
 
+# ── tpick (terminal theme picker) ──────────────────────────────────
+# Clona direto (sem rodar tpick/install.sh) pra não duplicar a integração
+# de shell — o .zshrc dos dotfiles já faz o source com guard.
+TPICK_DIR="$HOME/.tpick"
+if [[ ! -d "$TPICK_DIR/.git" ]]; then
+  info "Cloning tpick to $TPICK_DIR..."
+  git clone --quiet https://github.com/HenryKun55/tpick "$TPICK_DIR" \
+    || warn "tpick clone failed."
+else
+  info "tpick already cloned at $TPICK_DIR."
+fi
+
+# Baixa os temas pro alacritty se ainda não tiver
+THEMES_DIR="$HOME/.config/alacritty/themes"
+if [[ -d "$TPICK_DIR" && ( ! -d "$THEMES_DIR" || -z "$(ls -A "$THEMES_DIR" 2>/dev/null)" ) ]]; then
+  if command -v python3 &>/dev/null; then
+    info "Fetching alacritty themes via tpick..."
+    python3 "$TPICK_DIR/fetch_themes.py" || warn "tpick theme fetch failed."
+  else
+    warn "python3 not found, skipping tpick theme fetch."
+  fi
+fi
+
 # ── Tmux plugins (via TPM, headless) ───────────────────────────────
 if [[ -x "$TPM_DIR/bin/install_plugins" ]]; then
   info "Installing tmux plugins via TPM..."

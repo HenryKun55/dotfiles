@@ -97,6 +97,7 @@ check_symlink "$HOME/.gitconfig"        "$DOTFILES/git/.gitconfig"
 hdr "Editor / plugin managers state"
 check_dir "$HOME/.tmux/plugins/tpm"            "git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
 check_dir "$HOME/.local/share/nvim/lazy"       "open nvim once — lazy.nvim bootstraps automatically"
+check_file "$HOME/.tpick/tpick.sh"             "git clone https://github.com/HenryKun55/tpick ~/.tpick"
 
 echo ""
 if [[ "$MISSING" -eq 0 ]]; then

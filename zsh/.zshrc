@@ -235,6 +235,21 @@ fi
 _path_append "$HOME/.maestro/bin"
 
 # ============================================================================
+# TPICK — terminal theme picker
+# Procura nos paths conhecidos. ~/.tpick é o default oficial do installer;
+# o segundo é o legado de quando eu mantinha o repo no workspace.
+# ============================================================================
+for _tpick in "$HOME/.tpick" "$HOME/Documents/workspace/tpick"; do
+  if [[ -f "$_tpick/tpick.sh" ]]; then
+    export TPICK_DIR="$_tpick"
+    export TPICK_THEMES_DIR="$HOME/.config/alacritty/themes"
+    source "$_tpick/tpick.sh"
+    break
+  fi
+done
+unset _tpick
+
+# ============================================================================
 # ZCOMPILE — recompila .zshrc em bytecode quando ele muda
 # ============================================================================
 if [[ ~/.zshrc -nt ~/.zshrc.zwc || ! -s ~/.zshrc.zwc ]]; then
@@ -244,6 +259,3 @@ fi
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-
-# tpick — terminal theme picker
-source "$HOME/.tpick/tpick.sh"
