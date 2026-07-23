@@ -259,3 +259,6 @@ fi
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# gcloud CLI — python explícito (evita usar o python do sistema)
+export CLOUDSDK_PYTHON=/opt/homebrew/bin/python3.14
