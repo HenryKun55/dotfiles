@@ -83,6 +83,22 @@ fi
 
 check_dir "$HOME/.bun" "install: curl -fsSL https://bun.sh/install | bash"
 
+hdr "C/C++ toolchain"
+# clang/clang++/clangd/make/lldb vêm do Xcode Command Line Tools.
+check_bin clang    "xcode-select --install"
+check_bin clang++  "xcode-select --install"
+check_bin clangd   "xcode-select --install  (LSP de C/C++ no nvim)"
+check_bin make     "xcode-select --install"
+check_bin lldb     "xcode-select --install  (debugger; gdb não roda em arm64 macOS)"
+check_bin cmake    "brew install cmake"
+check_bin ninja    "brew install ninja"
+# clang-format é opcional (formatação); o Xcode CLT não o inclui.
+if command -v clang-format &>/dev/null; then
+  ok "clang-format ($(command -v clang-format))"
+else
+  skipped "clang-format" "brew install clang-format"
+fi
+
 hdr "Dotfiles symlinks"
 DOTFILES="${DOTFILES:-$HOME/dotfiles}"
 check_symlink "$HOME/.config/nvim"      "$DOTFILES/nvim"

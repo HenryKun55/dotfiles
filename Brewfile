@@ -26,7 +26,12 @@ brew "rbenv"
 brew "prettierd"
 brew "lua-language-server"
 brew "tree-sitter-cli"
+
+# ── C/C++ ───────────────────────────────────────────────────────────
+# clang/clang++/clangd/make/lldb vêm do Xcode Command Line Tools (xcode-select
+# --install), não do brew. Aqui só o que é brew-only:
 brew "cmake"
+brew "ninja"
 
 # ── Casks ───────────────────────────────────────────────────────────
 cask "alacritty"
