@@ -102,7 +102,10 @@ alias cls='clear'
 alias history='history 1'
 alias kodiak-launcher=~/.local/bin/kodiak-launcher
 alias ta='tmux attach'
-alias tn='tmux new -s' 
+alias tn='tmux new -s'
+# Reinicia o pboard (daemon do clipboard do macOS) quando ele trava —
+# sintoma: Alacritty "NSPasteboard#writeObjects: returned false".
+alias fixclip='killall pboard && echo "pboard reiniciado"'
 # iOS Simulator — boota um device com iOS 18.6 e abre o Simulator.app.
 # Uso: simulator                       (default: iPhone 16 Pro)
 #      simulator "iPhone 16"           (qualquer nome listado em `xcrun simctl list devices`)
