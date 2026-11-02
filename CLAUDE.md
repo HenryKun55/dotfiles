@@ -7,7 +7,8 @@ Personal macOS dev environment: zsh, neovim, tmux, alacritty, git.
 | Path | Symlinked to | Notes |
 |---|---|---|
 | `zsh/.zshrc` | `~/.zshrc` | Defensive — every PATH/source is guarded by `_have`/`_path_*` helpers so missing tools don't break the shell |
-| `zsh/.zshenv`, `.zprofile`, `.p10k.zsh`, `.antigenrc` | `~/.<file>` | |
+| `zsh/.zshenv`, `.zprofile`, `.p10k.zsh` | `~/.<file>` | |
+| `git/hooks/pre-commit` | `core.hooksPath` of this repo | Refuses commits that look like keys (this repo is public) |
 | `nvim/` | `~/.config/nvim` | Lua config, lazy.nvim |
 | `alacritty/` | `~/.config/alacritty` | |
 | `tmux/tmux.conf` | `~/.tmux.conf` | TPM-managed plugins |
@@ -21,7 +22,7 @@ Personal macOS dev environment: zsh, neovim, tmux, alacritty, git.
 - **Bootstrap is idempotent.** `install.sh` backs up existing files to `~/.dotfiles-backup-<ts>/` before symlinking, and skips work that's already done.
 - **`.zshrc` must stay defensive.** New tools/plugins must be wrapped in existence checks (`_have foo && ...` or `[[ -d ... ]] && ...`) so the file is usable on a fresh machine without everything installed yet.
 - **Heavy/optional installs are opt-in.** See `ask_yn` in `install.sh` (currently used for `openjdk@17`).
-- **No secrets.** All credentials go through `osxkeychain` / `gh auth` — never commit tokens or write them into config files.
+- **No secrets. This repo is public.** Credentials go through `osxkeychain` / `gh auth`, or live outside the repo with `chmod 600`: personal API keys in `~/.config/secrets.env` (sourced by `.zshrc`), per-project ones in `~/.config/<client>/<project>.env`, loaded on `cd` into the project and unset on leaving it (`_PROJECT_ENVS` map in `.zshrc`). `install.sh` lists the ones missing on a new machine and `doctor.sh` checks existence and mode, never content. The pre-commit hook blocks anything that looks like a key.
 
 ## Common tasks
 

@@ -2,3 +2,13 @@ nvim/plugin/packer_compiled.lua
 nvim/gitsigns_issue/
 .DS_Store
 alacritty/themes/
+
+# Segredos nunca entram neste repositório (ele é público).
+*.env
+.env*
+secrets*
+*.pem
+*.key
+id_*
+.netrc
+token.json

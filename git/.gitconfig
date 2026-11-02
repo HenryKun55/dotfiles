@@ -10,16 +10,10 @@
   l = !git log --pretty=format:'%C(blue)%h%C(red)%d %C(white)%s %C(cyan)[%cn] %C(green)%cr'
 [push]
     default = current
-[includeIf "gitdir:~/Documents/distrito-workspace/"]
-  path = ~/Documents/distrito-workspace/.gitconfig
 [init]
 	defaultBranch = master
-[includeIf "gitdir:~/Documents/ubotsworkspace/"]
-  path = ~/Documents/ubotsworkspace/.gitconfig
 [includeIf "gitdir:~/Documents/workspace/egoeimi/"]
   path = ~/Documents/workspace/egoeimi/.gitconfig
-[includeIf "gitdir:~/Documents/bbs/"]
-  path = ~/Documents/bbs/.gitconfig
 [credential]
 	helper = osxkeychain
 [credential "https://github.com"]
@@ -28,3 +22,11 @@
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/opt/homebrew/bin/gh auth git-credential
+[includeIf "gitdir:~/Documents/workspace/egoeimi/nabati/"]
+  path = ~/Documents/workspace/egoeimi/nabati/.gitconfig
+# Go resolve modulos privados por HTTPS e nao tem credencial para o GitLab da
+# eDOT. Reescreve para SSH (chave id_ed25519_nabati). Precisa ser global porque
+# o Go roda git no cache de modulos, fora do diretorio do projeto.
+# Usar com GOPRIVATE=gitlab.edot.id
+[url "git@gitlab.edot.id:"]
+	insteadOf = https://gitlab.edot.id/

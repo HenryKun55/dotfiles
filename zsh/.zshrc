@@ -265,3 +265,32 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # gcloud CLI — python explícito (evita usar o python do sistema)
 export CLOUDSDK_PYTHON=/opt/homebrew/bin/python3.14
+
+# Segredos pessoais (chaves de API). Ficam fora deste repositorio, em
+# ~/.config/secrets.env (chmod 600), copiado a mao entre maquinas.
+[[ -r "$HOME/.config/secrets.env" ]] && source "$HOME/.config/secrets.env"
+
+# Segredos por projeto: carregados ao entrar na pasta e apagados ao sair, para
+# nao vazarem para o ambiente de outros clientes. Os arquivos ficam fora deste
+# repositorio (chmod 600). Projeto novo = uma linha a mais no mapa.
+typeset -gA _PROJECT_ENVS=(
+  "$HOME/Documents/workspace/egoeimi/nabati" "$HOME/.config/egoeimi/nabati.env"
+)
+typeset -ga _PROJECT_ENV_VARS
+typeset -g _PROJECT_ENV_LOADED=""
+_project_env() {
+  local dir file match=""
+  for dir file in "${(@kv)_PROJECT_ENVS}"; do
+    [[ $PWD == "$dir" || $PWD == "$dir"/* ]] && { match=$file; break; }
+  done
+  [[ $match == "$_PROJECT_ENV_LOADED" ]] && return
+  (( ${#_PROJECT_ENV_VARS} )) && unset -- "${_PROJECT_ENV_VARS[@]}"
+  _PROJECT_ENV_VARS=()
+  _PROJECT_ENV_LOADED=$match
+  [[ -n $match && -r $match ]] || return
+  _PROJECT_ENV_VARS=(${(f)"$(sed -nE 's/^(export[[:space:]]+)?([A-Za-z_][A-Za-z0-9_]*)=.*/\2/p' "$match")"})
+  set -a; source "$match"; set +a
+}
+autoload -Uz add-zsh-hook
+add-zsh-hook chpwd _project_env
+_project_env

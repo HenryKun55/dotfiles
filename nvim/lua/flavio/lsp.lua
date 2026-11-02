@@ -88,3 +88,9 @@ vim.diagnostic.config({
   severity_sort = false,
 })
 
+vim.api.nvim_create_user_command('LspRestart', function()
+  for _, c in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
+    vim.lsp.stop_client(c.id)
+  end
+  vim.cmd('edit')
+end, {})

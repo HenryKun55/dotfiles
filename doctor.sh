@@ -58,6 +58,23 @@ check_bin prettierd "brew install prettierd"
 check_bin lua-language-server "brew install lua-language-server"
 check_bin tree-sitter "brew install tree-sitter-cli"
 
+check_bin wget     "brew install wget"
+
+hdr "AI / Claude Code"
+check_bin claude   "npm install -g @anthropic-ai/claude-code"
+check_bin rtk      "brew install rtk"
+check_bin uv       "brew install uv"
+
+hdr "Cloud / infra"
+check_bin go       "brew install go"
+check_bin aws      "brew install awscli"
+check_bin gcloud   "brew install --cask gcloud-cli"
+check_bin docker   "brew install --cask docker-desktop"
+check_bin argocd   "brew install argocd"
+check_bin grpcurl  "brew install grpcurl"
+check_bin mongosh  "brew install mongosh"
+check_file /opt/homebrew/bin/python3.14 "brew install python@3.14  (CLOUDSDK_PYTHON)"
+
 hdr "Shell extras"
 check_file /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme   "brew install powerlevel10k"
 check_file /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh "brew install zsh-syntax-highlighting"
@@ -114,6 +131,18 @@ hdr "Editor / plugin managers state"
 check_dir "$HOME/.tmux/plugins/tpm"            "git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
 check_dir "$HOME/.local/share/nvim/lazy"       "open nvim once — lazy.nvim bootstraps automatically"
 check_file "$HOME/.tpick/tpick.sh"             "git clone https://github.com/HenryKun55/tpick ~/.tpick"
+
+hdr "Segredos (fora do git; só existência e permissão, nunca o conteúdo)"
+for s in "$HOME/.config/secrets.env" "$HOME/.config/egoeimi/nabati.env" "$HOME/.netrc" \
+         "$HOME/.ssh/config" "$HOME/.ssh/id_ed25519_nabati" "$HOME/.nabati-chat/token.json"; do
+  if [[ ! -e "$s" ]]; then
+    miss "$s" "copie à mão da máquina antiga"
+  elif [[ "$(stat -f %Lp "$s")" != "600" ]]; then
+    miss "$s" "chmod 600 $s"
+  else
+    ok "$s (600)"
+  fi
+done
 
 echo ""
 if [[ "$MISSING" -eq 0 ]]; then

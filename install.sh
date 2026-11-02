@@ -31,6 +31,13 @@ if [[ "$(uname)" != "Darwin" ]]; then
   exit 1
 fi
 
+# ── Xcode Command Line Tools (git, clang, make) ────────────────────
+if ! xcode-select -p &>/dev/null; then
+  info "Installing Xcode Command Line Tools (a window will open; run this script again when it finishes)..."
+  xcode-select --install || true
+  exit 0
+fi
+
 # ── Homebrew ────────────────────────────────────────────────────────
 if ! command -v brew &>/dev/null; then
   info "Installing Homebrew..."
@@ -95,8 +102,12 @@ backup_and_link "$DOTFILES/zsh/.zshrc"       "$HOME/.zshrc"
 backup_and_link "$DOTFILES/zsh/.zshenv"      "$HOME/.zshenv"
 backup_and_link "$DOTFILES/zsh/.zprofile"    "$HOME/.zprofile"
 backup_and_link "$DOTFILES/zsh/.p10k.zsh"    "$HOME/.p10k.zsh"
-backup_and_link "$DOTFILES/zsh/.antigenrc"   "$HOME/.antigenrc"
 backup_and_link "$DOTFILES/git/.gitconfig"   "$HOME/.gitconfig"
+
+# ── Proteção contra chave no git (o repositório é público) ─────────
+chmod +x "$DOTFILES/git/hooks/pre-commit"
+git -C "$DOTFILES" config core.hooksPath git/hooks
+info "pre-commit hook active (blocks commits that look like keys)."
 
 # ── TPM (Tmux Plugin Manager) ──────────────────────────────────────
 TPM_DIR="$HOME/.tmux/plugins/tpm"
@@ -120,6 +131,17 @@ if command -v fnm &>/dev/null; then
   fi
 else
   warn "fnm not found, skipping Node.js install."
+fi
+
+# ── Claude Code ─────────────────────────────────────────────────────
+# Fica no node do fnm (npm global). O rtk, que o hook dele chama, vem do Brewfile.
+if command -v claude &>/dev/null; then
+  info "Claude Code already installed: $(claude --version 2>/dev/null | head -1)"
+elif command -v npm &>/dev/null; then
+  info "Installing Claude Code..."
+  npm install -g @anthropic-ai/claude-code || warn "Claude Code install failed."
+else
+  warn "npm not found, skipping Claude Code install."
 fi
 
 # ── Bun ─────────────────────────────────────────────────────────────
@@ -169,9 +191,41 @@ else
   warn "nvim not found, skipping plugin sync."
 fi
 
+# ── Segredos: só pastas e permissões, nunca conteúdo ───────────────
+# As chaves não vivem neste repositório. O script cria o lugar delas com a
+# permissão certa e lista o que falta copiar à mão da máquina antiga.
+mkdir -p "$HOME/.config/egoeimi" "$HOME/.ssh"
+chmod 700 "$HOME/.config/egoeimi" "$HOME/.ssh"
+SECRETS=(
+  "$HOME/.config/secrets.env"
+  "$HOME/.config/egoeimi/nabati.env"
+  "$HOME/.netrc"
+  "$HOME/.ssh/config"
+  "$HOME/.ssh/id_ed25519_nabati"
+  "$HOME/.ssh/id_ed25519_bs4bet"
+  "$HOME/.nabati-chat/token.json"
+  "$HOME/.nabati-docs"
+  "$HOME/Documents/workspace/egoeimi/.gitconfig"
+  "$HOME/Documents/workspace/egoeimi/nabati/.gitconfig"
+  "$HOME/Documents/workspace/egoeimi/nabati/.env"
+)
+missing=()
+for s in "${SECRETS[@]}"; do
+  if [[ -e "$s" ]]; then
+    [[ -f "$s" ]] && chmod 600 "$s"
+  else
+    missing+=("$s")
+  fi
+done
+
 # ── Done ────────────────────────────────────────────────────────────
 echo ""
 info "Setup complete!"
+if (( ${#missing[@]} )); then
+  echo ""
+  warn "Copie à mão da máquina antiga (não ficam no git):"
+  for s in "${missing[@]}"; do echo "  • $s"; done
+fi
 echo ""
 warn "Recommended:"
 echo "  • Run ./doctor.sh to verify everything is in place"

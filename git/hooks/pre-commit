@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Recusa commit com cara de chave. O repositório é público: uma chave que entra
+# aqui está vazada, mesmo que o commit seja desfeito depois.
+# Ligado pelo install.sh (core.hooksPath = git/hooks).
+set -u
+
+pattern='(API_KEY|SECRET|TOKEN|PASSWORD|PASSWD)[A-Z_]*[[:space:]]*=[[:space:]]*["'\'']?[A-Za-z0-9_+/=.-]{12,}|AKIA[0-9A-Z]{16}|AIza[0-9A-Za-z_-]{35}|gh[pousr]_[A-Za-z0-9]{36}|glpat-[A-Za-z0-9_-]{20}|sk-[A-Za-z0-9-]{20}|xox[abpr]-|-----BEGIN [A-Z ]*PRIVATE KEY-----'
+
+if git diff --cached -U0 --no-color | grep -E '^\+[^+]' | grep -Eq "$pattern"; then
+  echo "pre-commit: isto parece uma chave ou senha. Commit recusado." >&2
+  echo "Coloque o valor em ~/.config/secrets.env (chmod 600), fora do repositório." >&2
+  echo "Arquivos com a linha suspeita:" >&2
+  git diff --cached --name-only | while read -r f; do
+    git diff --cached -U0 --no-color -- "$f" | grep -E '^\+[^+]' | grep -Eq "$pattern" && echo "  $f" >&2
+  done
+  exit 1
+fi
